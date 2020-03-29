@@ -1,3 +1,4 @@
+### The following came from the [**original repo**](https://github.com/pret/pokeemerald)
 # Pokémon Emerald
 
 [![Build Status][travis-badge]][travis]
@@ -12,7 +13,6 @@ It builds the following ROM:
 * [**pokeemerald.gba**](https://datomatic.no-intro.org/index.php?page=show_record&s=23&n=1961) `sha1: f3ae088181bf583e55daf962a92bb46f4f1d07b7`
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
-
 
 ## See also
 
@@ -34,3 +34,16 @@ Other disassembly and/or decompilation projects:
 ## Contacts
 
 You can find us on [Discord](https://discord.gg/d5dubZ3) and [IRC](https://kiwiirc.com/client/irc.freenode.net/?#pret).
+
+
+
+
+### The following is comes from [**Amulek1416**](https://github.com/Amulek1416)
+
+## Added/Changed Features
+* Change in storyline along the dialog of most characters
+* Able to pick any of the first 3gen starters (just keep pressing right past the pokeball to see them)
+* When Pokémon faints, it can't be revived. It is now dead.
+* Start off with a special surprise in item PC (currently to help play-test)
+* Every Pokémon is shiny (cause why not?)
+* Currently has a character that blocks you from going any farther than the first two routes and towns (will be removed after more is developed)
