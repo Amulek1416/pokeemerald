@@ -2,7 +2,6 @@
 *.o
 *.i
 *.elf
-*.gba
 *.sgm
 *.sa1
 *.sg1
@@ -32,3 +31,6 @@ porymap.project.cfg
 .vscode/
 *.a
 .fuse_hidden*
+*payload.gba
+*berry_fix.gba
+*.code-workspace
