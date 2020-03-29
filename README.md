@@ -38,7 +38,7 @@ You can find us on [Discord](https://discord.gg/d5dubZ3) and [IRC](https://kiwii
 
 
 
-### The following is comes from [**Amulek1416**](https://github.com/Amulek1416)
+### The following comes from [**Amulek1416**](https://github.com/Amulek1416)
 
 ## Added/Changed Features
 * Change in storyline along the dialog of most characters
