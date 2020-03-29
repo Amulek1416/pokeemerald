@@ -85,7 +85,8 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_DefeatedOpponent:: @ 824F911
 	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	playfanfare MUS_ME_ASA
 	waitfanfare
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 BattleFrontier_BattlePalaceBattleRoom_EventScript_AskReadyForOpponent:: @ 824F98A
 	frontier_getbrainstatus
 	copyvar VAR_TEMP_F, VAR_RESULT
@@ -291,13 +292,15 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_DoPalaceBattle:: @ 824FDF7
 	closemessage
 	setvar VAR_TEMP_2, 0
 	frontier_set FRONTIER_DATA_RECORD_DISABLED, FALSE
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	setvar VAR_0x8004, SPECIAL_BATTLE_PALACE
 	setvar VAR_0x8005, 0
 	special DoSpecialTrainerBattle
 	waitstate
 	frontier_restorehelditems
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	frontier_resetsketch
 	return
 

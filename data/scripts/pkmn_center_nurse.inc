@@ -25,6 +25,8 @@ EventScript_PkmnCenterNurse_HealPkmn:: @ 827195A
     call_if_eq EventScript_PkmnCenterNurse_IllTakeYourPkmn2
     waitmessage
     call EventScript_PkmnCenterNurse_TakeAndHealPkmn
+    message gText_ThankYouForWaiting @ ADDED CODE
+    compare VAR_RESULT, 0 @ ADDED CODE
     goto_if_unset FLAG_POKERUS_EXPLAINED, EventScript_PkmnCenterNurse_CheckPokerus
     goto EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom
     end
@@ -44,7 +46,12 @@ EventScript_PkmnCenterNurse_TakeAndHealPkmn:: @ 8271993
     waitfieldeffect FLDEFF_POKECENTER_HEAL
     applymovement VAR_0x800B, Common_Movement_WalkInPlaceFastestDown
     waitmovement 0
-    special HealPlayerParty
+    @special HealPlayerParty @ ORIGINAL CODE
+    specialvar VAR_RESULT, HealAtPokeCenter @ MODIFIED CODE
+    copyvar VAR_0x8008, VAR_RESULT @ ADDED CODE
+    compare VAR_0x8008, 0 @ ADDED CODE
+    goto_if_ne EventScript_PkmnCenterNurse_BringOutYourDead @ ADDED CODE
+    message gText_RestoredPkmnToFullHealth @ ADDED CODE
     return
 
 EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom:: @ 82719B1
@@ -59,16 +66,32 @@ EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom:: @ 82719B1
     goto_if_eq EventScript_PkmnCenterNurse_PlayerWaitingInUnionRoom
     end
 
-@ VAR_0x8004 is 1 when player has Gold Card
+@ VAR_0x8004 is 1 when player has Gold Card. VAR_RESULT is if any of the player's pokemon are fainted
 EventScript_PkmnCenterNurse_ReturnPkmn:: @ 82719E2
     compare VAR_0x8004, 1
     goto_if_eq EventScript_PkmnCenterNurse_ReturnPkmn2
+    message gText_ThankYouForWaiting @ ADDED CODE
+    compare VAR_RESULT, 0 @ ADDED CODE
+    goto_if_ne EventScript_PkmnCenterNurse_BringOutYourDead @ ADDED CODE
     message gText_RestoredPkmnToFullHealth
     waitmessage
     applymovement VAR_0x800B, EventScript_PkmnCenterNurse_Bow
     waitmovement 0
-    message gText_WeHopeToSeeYouAgain
+    @message gText_WeHopeToSeeYouAgain @ ORIGINAL CODE
     return
+
+@ ADDED FUNCTION: Added to take care of dead (fainted) pokemon. 
+EventScript_PkmnCenterNurse_BringOutYourDead::
+    message gText_RestoredPkmnTookCareOfDead
+    call_if_unset FLAG_RECEIVED_POKEASHES_CASE, EventScript_GetPkmnAshesCase
+    return
+
+@ ADDED FUNCTION: Added to give player a place to store their dead pokemon
+EventScript_GetPkmnAshesCase::
+    message gText_NoPkmnAshesCase
+    giveitem ITEM_POKEASHES_CASE
+    setflag FLAG_RECEIVED_POKEASHES_CASE
+    message gText_ExplainAshesCase
 
 EventScript_PkmnCenterNurse_ReturnPkmn2:: @ 8271A03
     message gText_ThankYouForWaiting

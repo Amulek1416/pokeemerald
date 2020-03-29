@@ -78,7 +78,8 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern:: @ 820BB00
 	fadescreen FADE_TO_BLACK
 	playfanfare MUS_ME_ASA
 	waitfanfare
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	removeobject 1
 	setflag FLAG_HIDE_ROUTE_110_TEAM_AQUA
 	compare VAR_REGISTER_BIRCH_STATE, 0

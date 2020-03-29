@@ -258,8 +258,28 @@ LittlerootTown_EventScript_FatMan:: @ 81E8022
 	end
 
 LittlerootTown_EventScript_Boy:: @ 81E802B
-	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC
+	lockall @ ADDED TO ORIGINAL CODE
+	faceplayer @ ADDED TO ORIGINAL CODE
+	@ msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC @ ORIGINAL CODE
+	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_YESNO @ MODIFIED CODE
+	@ REST OF THIS IS ADDED TO ORIGINAL CODE
+	compare VAR_RESULT, YES
+	goto_if_eq LittlerottTown_EventScript_BirchFamilyStory
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerottTown_EventScript_NoBirchFamilyStory
+	releaseall
 	end
+
+@ ADDED TO ORIGINAL CODE
+LittlerottTown_EventScript_BirchFamilyStory::
+	msgbox LittlerootTown_Text_BirchFamilyStory, MSGBOX_NPC
+	end
+
+@ ADDED TO ORIGINAL CODE
+LittlerottTown_EventScript_NoBirchFamilyStory::
+	msgbox LittlerootTown_Text_NoBirchFamilyStory, MSGBOX_NPC
+	end
+
 
 LittlerootTown_EventScript_Twin:: @ 81E8034
 	lock
@@ -970,7 +990,8 @@ LittlerootTown_Text_OurNewHomeLetsGoInside: @ 81E86BC
 LittlerootTown_Text_WaitPlayer: @ 81E87E1
 	.string "MOM: Wait, {PLAYER}!$"
 
-LittlerootTown_Text_WearTheseRunningShoes: @ 81E87F0
+@ ORIGNAL TEXT
+LittlerootTown_Text_WearTheseRunningShoes_ORIGINAL: @ 81E87F0
 	.string "MOM: {PLAYER}! {PLAYER}! Did you\n"
 	.string "introduce yourself to PROF. BIRCH?\p"
 	.string "Oh! What an adorable POKéMON!\n"
@@ -981,17 +1002,50 @@ LittlerootTown_Text_WearTheseRunningShoes: @ 81E87F0
 	.string "adventure, wear these RUNNING SHOES.\p"
 	.string "They'll put a zip in your step!$"
 
-LittlerootTown_Text_SwitchShoesWithRunningShoes: @ 81E8925
+@ MODIFIED TEXT
+LittlerootTown_Text_WearTheseRunningShoes: @ 81E87F0
+	.string "MOM: {PLAYER}! {PLAYER}!\n"
+	.string "Oh! What an adorable POKéMON!\p"
+	.string "Did you introduce yourself \n"
+	.string "to PROF. BIRCH?\p"
+	.string "… … … … … … … …\n"
+	.string "… … … … … … … …\p"
+	.string "WHAT?! You killed {RIVAL}'s POKéMON?!\p"
+	.string "Well, she probably derserved it!\p"
+	.string "Anyway, if you're going out on an\n"
+	.string "adventure, wear these RUNNING SHOES.\p"
+	.string "They'll put a zip in your step!$"
+
+@ ORIGINAL TEXT
+LittlerootTown_Text_SwitchShoesWithRunningShoes_ORIGINAL: @ 81E8925
 	.string "{PLAYER} switched shoes with the\n"
 	.string "RUNNING SHOES.$"
 
-LittlerootTown_Text_ExplainRunningShoes: @ 81E894F
+@ MODIFIED TEXT
+LittlerootTown_Text_SwitchShoesWithRunningShoes: @ 81E8925
+	.string "{PLAYER} switched shoes with the\n"
+	.string "RUNNING SHOES!\p"
+	.string "{PLAYER}'s feet start tingling\n"
+	.string "with enery!$"
+
+@ ORIGINAL TEXT
+LittlerootTown_Text_ExplainRunningShoes_ORIGINAL: @ 81E894F
 	.string "MOM: {PLAYER}, those shoes came with\n"
 	.string "instructions.\p"
 	.string "“Press the B Button while wearing these\n"
 	.string "RUNNING SHOES to run extra-fast!\p"
 	.string "“Slip on these RUNNING SHOES and race\n"
 	.string "in the great outdoors!”$"
+
+@ MODIFIED TEXT
+LittlerootTown_Text_ExplainRunningShoes: @ 81E894F
+	.string "MOM: {PLAYER}, those shoes came with\n"
+	.string "instructions.\p"
+	.string "“Press the B Button while wearing these\n"
+	.string "RUNNING SHOES to run extra-fast!\p"
+	.string "“Slip on these RUNNING SHOES and race\n"
+	.string "”in the great outdoors!\p"
+	.string "”Now you can run into danger feet first!”$"
 
 LittlerootTown_Text_ComeHomeIfAnythingHappens: @ 81E8A03
 	.string "… … … … … … … …\n"
@@ -1003,28 +1057,76 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens: @ 81E8A03
 	.string "If anything happens, you can come home.\p"
 	.string "Go on, go get them, honey!$"
 
-LittlerootTown_Text_CanUsePCToStoreItems: @ 81E8ACF
+@ ORIGINAL TEXT
+LittlerootTown_Text_CanUsePCToStoreItems_ORIGINAL: @ 81E8ACF
 	.string "If you use a PC, you can store items\n"
 	.string "and POKéMON.\p"
 	.string "The power of science is staggering!$"
 
-LittlerootTown_Text_BirchSpendsDaysInLab: @ 81E8B25
+@ MODIFIED TEXT
+LittlerootTown_Text_CanUsePCToStoreItems: @ 81E8ACF
+	.string "If you use a PC, you can store items\n"
+	.string "and POKéMON.\p"
+	.string "While the items are stored by dehydration,\n"
+	.string "POKéMON are stored though a weight loss\l"
+	.string "program and SCIENCE!!!$"
+
+@ORIGINAL TEXT
+LittlerootTown_Text_BirchSpendsDaysInLab_ORIGINAL: @ 81E8B25
 	.string "PROF. BIRCH spends days in his LAB\n"
 	.string "studying, then he'll suddenly go out in\l"
 	.string "the wild to do more research…\p"
 	.string "When does PROF. BIRCH spend time\n"
 	.string "at home?$"
 
-LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut: @ 81E8BB8
+@ MODIFIED TEXT
+LittlerootTown_Text_BirchSpendsDaysInLab: @ 81E8B25
+	.string "PROF. BIRCH spends days in his LAB\n"
+	.string "studying, then he'll suddenly go out in\l"
+	.string "the wild to do more research…\p"
+	.string "Only if PROF. BIRCH would spend more\n"
+	.string "time fixing his broken family.\l"
+	.string "Would you like to hear the story?$"
+
+@ ADDED TEXT
+LittlerootTown_Text_BirchFamilyStory:
+	.string "Well you see, since PROF. BIRCH\n"
+	.string "never spends time at home, his\l"
+	.string "younger son WALLY became very\l"
+	.string "misbehaved\p"
+	.string "One day, about a month before you\n"
+	.string "arrived, PROF. BIRCH and WALLY had\l" 
+	.string "a huge fight due to WALLY'S actions.\p"
+	.string "The fight became so bad that WALLY\n"
+	.string "ran away into the wild grass without\l" 
+	.string "any POKéMON.\p"
+	.string "We could never find him after that...$"
+
+@ ADDED TEXT
+LittlerootTown_Text_NoBirchFamilyStory:
+	.string "Okay, let me know if you change\n"
+	.string "your mind.$"
+
+@ ORIGINAL TEXT
+LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut_ORIGINAL: @ 81E8BB8
 	.string "Um, um, um!\p"
 	.string "If you go outside and go in the grass,\n"
 	.string "wild POKéMON will jump out!$"
+
+@ MODIFIED TEXT
+LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut: @ 81E8BB8
+	.string "Um, um, um!\p"
+	.string "If you go outside and go in the grass,\n"
+	.string "wild POKéMON will jump out!\p"
+	.string "We already lost a couple children\n"
+	.string "that way...$"
 
 LittlerootTown_Text_DangerousIfYouDontHavePokemon: @ 81E8C07
 	.string "It's dangerous if you don't have\n"
 	.string "your own POKéMON.$"
 
-LittlerootTown_Text_CanYouGoSeeWhatsHappening: @ 81E8C3A
+@ ORIGINAL TEXT
+LittlerootTown_Text_CanYouGoSeeWhatsHappening_ORIGINAL: @ 81E8C3A
 	.string "Um, hi!\p"
 	.string "There are scary POKéMON outside!\n"
 	.string "I can hear their cries!\p"
@@ -1033,26 +1135,76 @@ LittlerootTown_Text_CanYouGoSeeWhatsHappening: @ 81E8C3A
 	.string "Can you go see what's happening\n"
 	.string "for me?$"
 
-LittlerootTown_Text_YouSavedBirch: @ 81E8CE3
+@ MODIFIED TEXT
+LittlerootTown_Text_CanYouGoSeeWhatsHappening: @ 81E8C3A
+	.string "Um, hi!\p"
+	.string "There are scary POKéMON outside!\n"
+	.string "I can hear their cries!\p"
+	.string "I want to go see what's going on,\n"
+	.string "but I don't have any POKéMON…\p"
+	.string "Can you go see what's happening\n"
+	.string "for me? I'm too young to die!$"
+
+@ ORIGINAL TEXT
+LittlerootTown_Text_YouSavedBirch_ORIGINAL: @ 81E8CE3
 	.string "You saved PROF. BIRCH!\n"
 	.string "I'm so glad!$"
 
-LittlerootTown_Text_GoodLuckCatchingPokemon: @ 81E8D07
+@ MODIFIED TEXT
+LittlerootTown_Text_YouSavedBirch: @ 81E8CE3
+	.string "I used to want to go out and\n"
+	.string "play in the grass.\p"
+	.string "But then one day my best friend\n"
+	.string "WALLY was snatched away by some\l"
+	.string "GIANT GREEN DRAGON!\p"
+	.string "That's something you just can't\n"
+	.string "come back from...$"
+
+@ ORIGINAL TEXT
+LittlerootTown_Text_GoodLuckCatchingPokemon_ORIGINAL: @ 81E8D07
 	.string "Are you going to catch POKéMON?\n"
 	.string "Good luck!$"
 
-LittlerootTown_Text_TownSign: @ 81E8D32
+@ MODIFIED TEXT
+LittlerootTown_Text_GoodLuckCatchingPokemon: @ 81E8D07
+	.string "Are you going to catch POKéMON?\n"
+	.string "Hope you don't get taken by a\l"
+	.string "GIANT GREEN DRAGON like WALLY!$"
+
+@ ORIGINAL TEXT
+LittlerootTown_Text_TownSign_ORIGINAL: @ 81E8D32
 	.string "LITTLEROOT TOWN\n"
 	.string "“A town that can't be shaded any hue.”$"
+
+@ MODIFIED TEXT
+LittlerootTown_Text_TownSign: @ 81E8D32
+	.string "LITTLEROOT TOWN\n"
+	.string "“A town that can't be shaded any hue.”\l"
+	.string "Except for the hue of dark humor...$"
 
 LittlerootTown_Text_ProfBirchsLab: @ 81E8D69
 	.string "PROF. BIRCH'S POKéMON LAB$"
 
-LittlerootTown_Text_PlayersHouse: @ 81E8D83
+@ ORIGINAL TEXT
+LittlerootTown_Text_PlayersHouse_ORIGINAL: @ 81E8D83
 	.string "{PLAYER}'s HOUSE$"
 
-LittlerootTown_Text_ProfBirchsHouse: @ 81E8D8E
+@ MODIFIED TEXT
+LittlerootTown_Text_PlayersHouse: @ 81E8D83
+	.string "{PLAYER}'s HOUSE,\n"
+	.string "formally owned by Lebron James$"
+
+@ ORIGINAL TEXT
+LittlerootTown_Text_ProfBirchsHouse_ORIGINAL: @ 81E8D8E
 	.string "PROF. BIRCH'S HOUSE$"
+
+@ MODIFIED TEXT
+LittlerootTown_Text_ProfBirchsHouse: @ 81E8D8E
+	.string "PROF. BIRCH'S HOUSE\p"
+	.string "Oh! There's a note!\p"
+	.string "MISSING:\n"
+	.string "WALLY\l"
+	.string "Please find our missing son!$"
 
 LittlerootTown_Text_BirchSomethingToShowYouAtLab: @ 81E8DA2
 	.string "PROF. BIRCH: Well, well, {PLAYER}{KUN}!\n"

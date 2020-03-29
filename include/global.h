@@ -978,6 +978,18 @@ struct SaveBlock1
     /*0x3D5A*/ u8 filler3D5A[0xA];
     /*0x3D64*/ struct SaveTrainerHill trainerHill;
     /*0x3D70*/ struct WaldaPhrase waldaPhrase;
+/**
+ * START OF CODE ADDED TO ORIGINAL
+ * 
+ * The memory values were a guess. 
+ */    
+    /*0x3A8D*/ u8 playerDeadPokemonCount;
+    /*0x3A8E*/ u16 totalDeathCount;
+    /*0x3A8F*/ struct Pokemon playerDeadPokemon[50];
+/**
+ * END OF ADDED CODE
+ */
+
     // sizeof: 0x3D88
 };
 

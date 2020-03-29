@@ -24,7 +24,8 @@ BattleFrontier_BattlePikeLobby_EventScript_GetChallengeStatus:: @ 825B707
 	end
 
 BattleFrontier_BattlePikeLobby_EventScript_QuitWithoutSaving:: @ 825B710
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	pike_resethelditems
 	lockall
 	msgbox BattleFrontier_BattlePikeLobby_Text_FailedToSaveBeforeQuitting, MSGBOX_DEFAULT
@@ -57,7 +58,8 @@ BattleFrontier_BattlePikeLobby_EventScript_GiveBattlePoints:: @ 825B78D
 	addvar VAR_RESULT, 1
 	pike_set PIKE_DATA_TOTAL_STREAKS, VAR_RESULT
 	special LoadPlayerParty
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	pike_resethelditems
 	message BattleFrontier_BattlePikeLobby_Text_ShallRecordResults
 	waitmessage
@@ -78,7 +80,8 @@ BattleFrontier_BattlePikeLobby_EventScript_LostChallenge:: @ 825B806
 	frontier_set FRONTIER_DATA_BATTLE_NUM, 0
 	pike_set PIKE_DATA_WIN_STREAK_ACTIVE, FALSE
 	special LoadPlayerParty
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	pike_resethelditems
 	pike_save 0
 	playse SE_SAVE
@@ -155,7 +158,8 @@ BattleFrontier_BattlePikeLobby_EventScript_SaveBeforeChallenge:: @ 825B95C
 	closemessage
 	frontier_settrainers
 	call BattleFrontier_BattlePikeLobby_EventScript_WalkToCorridor
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	call BattleFrontier_BattlePike_EventScript_CloseCurtain
 	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PIKE_CORRIDOR, 255, 6, 7
 	setvar VAR_TEMP_0, 0

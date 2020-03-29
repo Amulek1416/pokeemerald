@@ -62,7 +62,8 @@ BattleFrontier_BattleFactoryPreBattleRoom_EventScript_ReturnToRoomFromBattle:: @
 	msgbox BattleFrontier_BattleFactoryPreBattleRoom_Text_LetUsRestoreMons, MSGBOX_DEFAULT
 	playfanfare MUS_ME_ASA
 	waitfanfare
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	frontier_getbrainstatus
 	compare VAR_RESULT, FRONTIER_BRAIN_NOT_READY
 	goto_if_eq BattleFrontier_BattleFactoryPreBattleRoom_EventScript_AskReadyForRegularOpponent

@@ -12434,3 +12434,255 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MayLinkPlaceholder[] = {
     .species = SPECIES_KYOGRE,
     }
 };
+
+
+/**
+ * BEGINNING OF ADDED CODE COMPARED TO ORIGNAL CODE FORKED FROM
+ */
+
+// Contains definitions for rival parties. Mainly added the parties for 
+// when the player chooses Pikachu as their starter.
+
+static const struct TrainerMonNoItemDefaultMoves sParty_RivalRoute103Pika[] = {
+    {
+    .iv = 0,
+    .lvl = 5,
+    .species = SPECIES_EEVEE,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_RivalRoute110Pika[] = {
+    {
+    .iv = 50,
+    .lvl = 18,
+    .species = SPECIES_SLUGMA,
+    },
+    {
+    .iv = 50,
+    .lvl = 18,
+    .species = SPECIES_GRAVELER,
+    },
+    {
+    .iv = 100,
+    .lvl = 20,
+    .species = SPECIES_EEVEE,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_RivalRoute119Pika0[] = {
+    {
+    .iv = 100,
+    .lvl = 29,
+    .species = SPECIES_SLUGMA,
+    },
+    {
+    .iv = 100,
+    .lvl = 29,
+    .species = SPECIES_GOLEM,
+    },
+    {
+    .iv = 150,
+    .lvl = 31,
+    .species = SPECIES_FLAREON,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_RivalRoute119Pika1[] = {
+    {
+    .iv = 100,
+    .lvl = 29,
+    .species = SPECIES_SLUGMA,
+    },
+    {
+    .iv = 100,
+    .lvl = 29,
+    .species = SPECIES_GOLEM,
+    },
+    {
+    .iv = 150,
+    .lvl = 31,
+    .species = SPECIES_JOLTEON,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_RivalRoute119Pika2[] = {
+    {
+    .iv = 100,
+    .lvl = 29,
+    .species = SPECIES_SLUGMA,
+    },
+    {
+    .iv = 100,
+    .lvl = 29,
+    .species = SPECIES_GOLEM,
+    },
+    {
+    .iv = 150,
+    .lvl = 31,
+    .species = SPECIES_VAPOREON,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_RivalRoute119Pika3[] = {
+    {
+    .iv = 100,
+    .lvl = 29,
+    .species = SPECIES_SLUGMA,
+    },
+    {
+    .iv = 100,
+    .lvl = 29,
+    .species = SPECIES_GOLEM,
+    },
+    {
+    .iv = 150,
+    .lvl = 31,
+    .species = SPECIES_ESPEON,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_RivalRoute119Pika4[] = {
+    {
+    .iv = 100,
+    .lvl = 29,
+    .species = SPECIES_SLUGMA,
+    },
+    {
+    .iv = 100,
+    .lvl = 29,
+    .species = SPECIES_GOLEM,
+    },
+    {
+    .iv = 150,
+    .lvl = 31,
+    .species = SPECIES_UMBREON,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_RivalRustboroPika[] = {
+    {
+    .iv = 25,
+    .lvl = 13,
+    .species = SPECIES_SLUGMA,
+    },
+    {
+    .iv = 50,
+    .lvl = 15,
+    .species = SPECIES_EEVEE,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_RivalLilycovePika0[] = {
+    {
+    .iv = 150,
+    .lvl = 31,
+    .species = SPECIES_TROPIUS,
+    },
+    {
+    .iv = 150,
+    .lvl = 32,
+    .species = SPECIES_SLUGMA,
+    },
+    {
+    .iv = 150,
+    .lvl = 32,
+    .species = SPECIES_PELIPPER,
+    },
+    {
+    .iv = 200,
+    .lvl = 34,
+    .species = SPECIES_FLAREON,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_RivalLilycovePika1[] = {
+    {
+    .iv = 150,
+    .lvl = 31,
+    .species = SPECIES_TROPIUS,
+    },
+    {
+    .iv = 150,
+    .lvl = 32,
+    .species = SPECIES_SLUGMA,
+    },
+    {
+    .iv = 150,
+    .lvl = 32,
+    .species = SPECIES_PELIPPER,
+    },
+    {
+    .iv = 200,
+    .lvl = 34,
+    .species = SPECIES_JOLTEON,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_RivalLilycovePika2[] = {
+    {
+    .iv = 150,
+    .lvl = 31,
+    .species = SPECIES_TROPIUS,
+    },
+    {
+    .iv = 150,
+    .lvl = 32,
+    .species = SPECIES_SLUGMA,
+    },
+    {
+    .iv = 150,
+    .lvl = 32,
+    .species = SPECIES_PELIPPER,
+    },
+    {
+    .iv = 200,
+    .lvl = 34,
+    .species = SPECIES_VAPOREON,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_RivalLilycovePika3[] = {
+    {
+    .iv = 150,
+    .lvl = 31,
+    .species = SPECIES_TROPIUS,
+    },
+    {
+    .iv = 150,
+    .lvl = 32,
+    .species = SPECIES_SLUGMA,
+    },
+    {
+    .iv = 150,
+    .lvl = 32,
+    .species = SPECIES_PELIPPER,
+    },
+    {
+    .iv = 200,
+    .lvl = 34,
+    .species = SPECIES_ESPEON,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_RivalLilycovePika4[] = {
+    {
+    .iv = 150,
+    .lvl = 31,
+    .species = SPECIES_TROPIUS,
+    },
+    {
+    .iv = 150,
+    .lvl = 32,
+    .species = SPECIES_SLUGMA,
+    },
+    {
+    .iv = 150,
+    .lvl = 32,
+    .species = SPECIES_PELIPPER,
+    },
+    {
+    .iv = 200,
+    .lvl = 34,
+    .species = SPECIES_UMBREON,
+    }
+};

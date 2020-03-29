@@ -857,10 +857,56 @@
 #define TRAINER_BRENDAN_PLACEHOLDER         853
 #define TRAINER_MAY_PLACEHOLDER             854
 
+/**
+ * START OF MACROS ADDED TO ORIGINAL CODE
+ */
+#define TRAINER_MAY_ROUTE_103_PIKA          855
+#define TRAINER_MAY_ROUTE_110_PIKA          856
+#define TRAINER_MAY_ROUTE_119_PIKA_0        857
+#define TRAINER_MAY_ROUTE_119_PIKA_1        858
+#define TRAINER_MAY_ROUTE_119_PIKA_2        859
+#define TRAINER_MAY_ROUTE_119_PIKA_3        860
+#define TRAINER_MAY_ROUTE_119_PIKA_4        861
+#define TRAINER_MAY_RUSTBORO_PIKA           862
+#define TRAINER_MAY_LILYCOVE_PIKA_0         863
+#define TRAINER_MAY_LILYCOVE_PIKA_1         864
+#define TRAINER_MAY_LILYCOVE_PIKA_2         865
+#define TRAINER_MAY_LILYCOVE_PIKA_3         866
+#define TRAINER_MAY_LILYCOVE_PIKA_4         867
+#define TRAINER_BRENDAN_ROUTE_103_PIKA      868
+#define TRAINER_BRENDAN_ROUTE_110_PIKA      869
+#define TRAINER_BRENDAN_ROUTE_119_PIKA_0    870
+#define TRAINER_BRENDAN_ROUTE_119_PIKA_1    871
+#define TRAINER_BRENDAN_ROUTE_119_PIKA_2    872
+#define TRAINER_BRENDAN_ROUTE_119_PIKA_3    873
+#define TRAINER_BRENDAN_ROUTE_119_PIKA_4    874
+#define TRAINER_BRENDAN_RUSTBORO_PIKA       875
+#define TRAINER_BRENDAN_LILYCOVE_PIKA_0     876
+#define TRAINER_BRENDAN_LILYCOVE_PIKA_1     877
+#define TRAINER_BRENDAN_LILYCOVE_PIKA_2     878
+#define TRAINER_BRENDAN_LILYCOVE_PIKA_3     879
+#define TRAINER_BRENDAN_LILYCOVE_PIKA_4     880
+/**
+ * END OF ADDED MACROS 
+ */
+
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 
-#define TRAINERS_COUNT                      855
-#define MAX_TRAINERS_COUNT                  864
+/**
+ * START OF CODE MODIFIED FROM ORIGINAL
+ */
+   
+// ORIGINAL
+// #define TRAINERS_COUNT                      855
+// #define MAX_TRAINERS_COUNT                  864
+
+// MODIFIED
+#define TRAINERS_COUNT                      881
+#define MAX_TRAINERS_COUNT                  890
+
+/**
+ * END OF CODE MODIFIED FROM ORIGINAL
+ */
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H

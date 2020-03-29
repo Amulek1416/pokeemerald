@@ -9,6 +9,8 @@
 		.align 2
 gSpecials:: @ 81DBA64
 	def_special HealPlayerParty
+	def_special HealAtPokeCenter @ ADDED CODE
+	def_special HealOutsidePokeCenter @ ADDED CODE
 	def_special SetCableClubWarp
 	def_special DoCableClubWarp
 	def_special ReturnFromLinkRoom

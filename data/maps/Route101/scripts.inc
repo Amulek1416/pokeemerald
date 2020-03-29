@@ -230,7 +230,8 @@ Route101_EventScript_BirchsBag:: @ 81EBE16
 	applymovement 2, Route101_Movement_BirchApproachPlayer
 	waitmovement 0
 	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
@@ -283,19 +284,45 @@ Route101_Text_YouSavedMe: @ 81EBF12
 	.string "This is not the place to chat, so come\n"
 	.string "by my POKéMON LAB later, okay?$"
 
-Route101_Text_TakeTiredPokemonToPokeCenter: @ 81EBFDD
+@ ORIGINAL TEXT
+Route101_Text_TakeTiredPokemonToPokeCenter_ORIGINAL: @ 81EBFDD
 	.string "If POKéMON get tired, take them to\n"
 	.string "a POKéMON CENTER.\p"
 	.string "There's a POKéMON CENTER in OLDALE\n"
 	.string "TOWN right close by.$"
 
-Route101_Text_WildPokemonInTallGrass: @ 81EC04A
+@ MODIFIED TEXT
+Route101_Text_TakeTiredPokemonToPokeCenter: @ 81EBFDD
+	.string "If POKéMON get tired, take them to\n"
+	.string "a POKéMON CENTER.\p"
+	.string "The POKéMON CENTER can also dispose\n"
+	.string "of the remains of your POKéMON.\p"
+	.string "There's a POKéMON CENTER in OLDALE\n"
+	.string "TOWN right close by.$"
+
+@ ORIGINAL TEXT
+Route101_Text_WildPokemonInTallGrass_ORIGINAL: @ 81EC04A
 	.string "Wild POKéMON will jump out at you in\n"
 	.string "tall grass.\p"
 	.string "If you want to catch POKéMON, you have\n"
 	.string "to go into the tall grass and search.$"
 
-Route101_Text_RouteSign: @ 81EC0C8
+@ MODIFIED TEXT
+Route101_Text_WildPokemonInTallGrass: @ 81EC04A
+	.string "Wild POKéMON will jump out at you in\n"
+	.string "tall grass.\p"
+	.string "If you want to catch POKéMON, you have\n"
+	.string "to go into the tall grass and beat\l"
+	.string "some up until they're too weak to\l"
+	.string "fight back.$"
+
+@ ORIGINAL TEXT
+Route101_Text_RouteSign_ORIGINAL: @ 81EC0C8
 	.string "ROUTE 101\n"
 	.string "{UP_ARROW} OLDALE TOWN$"
 
+@ MODIFIED TEXT
+Route101_Text_RouteSign: @ 81EC0C8
+	.string "ROUTE 101\n"
+	.string "{UP_ARROW} OLDALE TOWN\l"
+	.string "{DOWN_ARROW} MOTHER'S$"

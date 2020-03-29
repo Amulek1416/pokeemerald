@@ -224,7 +224,8 @@ BattleFrontier_BattleDomePreBattleRoom_EventScript_ReturnFromBattle:: @ 824B5C7
 	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	playfanfare MUS_ME_ASA
 	waitfanfare
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	call BattleFrontier_BattleDomePreBattleRoom_EventScript_RoundCompleteMessage
 	fadescreen FADE_TO_BLACK
 	dome_showstatictourneytree

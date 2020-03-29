@@ -720,7 +720,8 @@ Common_EventScript_OutOfCenterPartyHeal:: @ 8272083
 	fadescreen FADE_TO_BLACK
 	playfanfare MUS_ME_ASA
 	waitfanfare
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealOutsidePokeCenter @ MODIFIED CODE
 	fadescreen FADE_FROM_BLACK
 	return
 

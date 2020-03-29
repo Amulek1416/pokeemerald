@@ -31,4 +31,13 @@ void SavePlayerBag(void);
 void ApplyNewEncryptionKeyToHword(u16 *hWord, u32 newKey);
 void ApplyNewEncryptionKeyToWord(u32 *word, u32 newKey);
 
+/**
+ * START OF FUNCTION PROTOTYPES ADDED TO ORIGINAL CODE
+ */
+void SavePlayerDeadPokemon(void);
+void LoadPlayerDeadPokemon(void);
+/**
+ * END OF ADDED FUNCTION PROTOTYPES
+ */
+
 #endif // GUARD_LOAD_SAVE_H

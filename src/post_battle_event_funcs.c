@@ -20,7 +20,17 @@ int GameClear(void)
         u8 count;
     } ribbonCounts[6];
 
-    HealPlayerParty();
+/**
+ * BEGINNING OF CODE MODIFIED FROM ORIGINAL
+ */
+    // ORIGINAL
+    // HealPlayerParty();
+
+    // MODIFIED
+    HealPlayerParty(TRUE);
+/**
+ * END OF MODIFIED CODE
+ */
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == TRUE)
     {

@@ -2159,6 +2159,13 @@ void BufferSaveMenuText(u8 textId, u8 *dest, u8 color)
                 string = ConvertIntToDecimalStringN(string, GetHoennPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 3);
             *string = EOS;
             break;
+
+        // START OF CASES ADDED TO ORIGINAL CODE
+        case SAVE_MENU_DEAD:
+            string = ConvertIntToDecimalStringN(string, gPlayerTotalDeathCount, STR_CONV_MODE_LEFT_ALIGN, 3);
+            break;
+        // END OF ADDED CASES
+
         case SAVE_MENU_PLAY_TIME:
             string = ConvertIntToDecimalStringN(string, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
             *(string++) = CHAR_COLON;

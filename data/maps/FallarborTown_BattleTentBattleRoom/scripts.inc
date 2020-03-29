@@ -96,7 +96,8 @@ FallarborTown_BattleTentBattleRoom_EventScript_IncrementBattleNum:: @ 82009B3
 	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	playfanfare MUS_ME_ASA
 	waitfanfare
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 FallarborTown_BattleTentBattleRoom_EventScript_AskContinueChallenge:: @ 8200A2A
 	frontier_get FRONTIER_DATA_BATTLE_NUM
 	compare VAR_RESULT, 1

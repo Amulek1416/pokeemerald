@@ -531,35 +531,112 @@ bool8 IsWirelessContest(void)
         return FALSE;
 }
 
-void HealPlayerParty(void)
+/**
+ * FUNCTION ADDED TO ORIGINAL CODE
+ * 
+ * Used to remove dead pokemon from trainer's party, increase Pokemon 
+ * Ashes count, increase total dead Pokemon count, and add pokemon to
+ * container for PokeAshes case.
+ */
+void TakeCareOfDead(u8 faintedPkmn)
+{
+    u8 i, j, tempCount;
+    tempCount = gPlayerPartyCount;
+    for(i = 0; i < tempCount; i++)
+    {
+        if(faintedPkmn & (0x01 << i))
+        {
+             //TODO: Add pokemon's ashes-filled ball to PokeAsh case
+            gPlayerDeadPokemon[gPlayerDeadPokemonCount] = gPlayerParty[i];
+            gPlayerDeadPokemonCount++;
+            gPlayerTotalDeathCount++;
+
+            ZeroMonData(&gPlayerParty[i]);
+
+            for(j = i+1; j < tempCount; j++)
+            {
+                gPlayerParty[j-1] = gPlayerParty[j];
+                ZeroMonData(&gPlayerParty[j]);
+            }
+
+            tempCount = gPlayerPartyCount;
+            i = 0;
+        }
+    }
+}
+
+/**
+ * FUNCTION MODIFIED FROM ORIGINAL CODE
+ * 
+ * Code from the original function that isn't used in this
+ * version will be commented out, while code added will 
+ * have a comment stating so
+ */
+u8 HealPlayerParty(bool8 atCenter) // Changed from "void HealPlayerParty(void)"
 {
     u8 i, j;
     u8 ppBonuses;
     u8 arg[4];
+    u8 faintedPkmn = 0; // Added
 
     // restore HP.
     for(i = 0; i < gPlayerPartyCount; i++)
     {
-        u16 maxHP = GetMonData(&gPlayerParty[i], MON_DATA_MAX_HP);
-        arg[0] = maxHP;
-        arg[1] = maxHP >> 8;
-        SetMonData(&gPlayerParty[i], MON_DATA_HP, arg);
-        ppBonuses = GetMonData(&gPlayerParty[i], MON_DATA_PP_BONUSES);
+        u16 isMonsAlive = GetMonData(&gPlayerParty[i], MON_DATA_HP); // ADDED
 
-        // restore PP.
-        for(j = 0; j < MAX_MON_MOVES; j++)
+        // Determines if the pokemon is alive and only will heal it when it isn't. 
+        // The if statement was added, but all the code inside is original
+        if(isMonsAlive)
         {
-            arg[0] = CalculatePPWithBonus(GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + j), ppBonuses, j);
-            SetMonData(&gPlayerParty[i], MON_DATA_PP1 + j, arg);
-        }
+            u16 maxHP = GetMonData(&gPlayerParty[i], MON_DATA_MAX_HP);
+            arg[0] = maxHP;
+            arg[1] = maxHP >> 8;
+            SetMonData(&gPlayerParty[i], MON_DATA_HP, arg);
+            ppBonuses = GetMonData(&gPlayerParty[i], MON_DATA_PP_BONUSES);
 
-        // since status is u32, the four 0 assignments here are probably for safety to prevent undefined data from reaching SetMonData.
-        arg[0] = 0;
-        arg[1] = 0;
-        arg[2] = 0;
-        arg[3] = 0;
-        SetMonData(&gPlayerParty[i], MON_DATA_STATUS, arg);
+            // restore PP.
+            for(j = 0; j < MAX_MON_MOVES; j++)
+            {
+                arg[0] = CalculatePPWithBonus(GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + j), ppBonuses, j);
+                SetMonData(&gPlayerParty[i], MON_DATA_PP1 + j, arg);
+            }
+
+            // since status is u32, the four 0 assignments here are probably for safety to prevent undefined data from reaching SetMonData.
+            arg[0] = 0;
+            arg[1] = 0;
+            arg[2] = 0;
+            arg[3] = 0;
+            SetMonData(&gPlayerParty[i], MON_DATA_STATUS, arg);
+        }
+        else // Added
+            faintedPkmn |= (0x01 << i); // Added
     }
+
+    // Only pokeCenters can take care of remains
+    if(faintedPkmn != 0 && atCenter) // Added
+        TakeCareOfDead(faintedPkmn); // Added
+
+    return faintedPkmn; // Added
+}
+
+/**
+ * FUNCTION ADDED TO ORIGINAL CODE
+ * 
+ * Wrapper function for assembly files
+ */
+u8 HealAtPokeCenter(void)
+{
+    return HealPlayerParty(TRUE);
+}
+
+/**
+ * FUNCTION ADDED TO ORIGINAL CODE
+ * 
+ * Wrapper function for assembly files
+ */
+u8 HealOutsidePokeCenter(void)
+{
+    return HealPlayerParty(FALSE);
 }
 
 u8 ScriptGiveMon(u16 species, u8 level, u16 item, u32 unused1, u32 unused2, u8 unused3)

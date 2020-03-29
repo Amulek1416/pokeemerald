@@ -65,7 +65,8 @@ BattleFrontier_BattleDomeLobby_EventScript_GiveBattlePoints:: @ 82498C9
 	dome_set DOME_DATA_HAS_WON_CHALLENGE, TRUE
 	dome_set DOME_DATA_WIN_STREAK_ACTIVE, TRUE
 	special LoadPlayerParty
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	goto BattleFrontier_BattleDomeLobby_EventScript_AskRecordBattle
 
 BattleFrontier_BattleDomeLobby_EventScript_LostChallenge:: @ 8249940
@@ -78,8 +79,8 @@ BattleFrontier_BattleDomeLobby_EventScript_LostChallenge:: @ 8249940
 	frontier_checkairshow
 	dome_set DOME_DATA_WIN_STREAK_ACTIVE, FALSE
 	dome_set DOME_DATA_ATTEMPTED_CHALLENGE, TRUE
-	special LoadPlayerParty
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 BattleFrontier_BattleDomeLobby_EventScript_AskRecordBattle:: @ 8249991
 	dome_save 0
 	playse SE_SAVE
@@ -198,7 +199,8 @@ BattleFrontier_BattleDomeLobby_EventScript_EnterChallenge:: @ 8249BC2
 	msgbox BattleFrontier_BattleDomeLobby_Text_ShowYouToBattleDome, MSGBOX_DEFAULT
 	closemessage
 	call BattleFrontier_BattleDomeLobby_EventScript_WalkToDoor
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	warp MAP_BATTLE_FRONTIER_BATTLE_DOME_CORRIDOR, 255, 23, 6
 	setvar VAR_TEMP_0, 0
 	waitstate

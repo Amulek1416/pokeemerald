@@ -243,6 +243,16 @@ extern u8 gEnemyPartyCount;
 extern struct Pokemon gEnemyParty[PARTY_SIZE];
 extern struct SpriteTemplate gMultiuseSpriteTemplate;
 
+/**
+ * START OF EXTERNS ADDED TO ORIGINAL CODE
+ */
+extern struct Pokemon gPlayerDeadPokemon[MAX_DEAD_POKEMON];
+extern u8 gPlayerDeadPokemonCount;
+extern u16 gPlayerTotalDeathCount;
+/**
+ * END OF ADDED EXTERNS
+ */
+
 extern const struct BattleMove gBattleMoves[];
 extern const u8 gFacilityClassToPicIndex[];
 extern const u8 gFacilityClassToTrainerClass[];

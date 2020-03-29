@@ -106,6 +106,7 @@ enum LanguageId
 #define BAG_POKEBALLS_COUNT 16
 #define BAG_TMHM_COUNT      64
 #define BAG_BERRIES_COUNT   46
+#define MAX_DEAD_POKEMON    50 // ADDED TO ORIGINAL CODE
 
 enum
 {
@@ -651,6 +652,15 @@ struct SaveBlock1 /* 0x02025734 */
     /*0x34*/ u16 mapView[0x100];
     /*0x234*/ u8 playerPartyCount;
     /*0x238*/ struct Pokemon playerParty[6];
+/**
+ * START VARIABLES ADDED TO ORIGINAL CODE
+ */
+    /*0xXXXX*/ u16 totalDeathCount;
+    /*0x3A8D*/ u8 playerDeadPokemonCount;
+    /*0x3A8E*/ struct Pokemon playerDeadPokemon[MAX_DEAD_POKEMON];
+/**
+ * END ADDED VARIABLES
+ */
     /*0x490*/ u32 money;
     /*0x494*/ u16 coins;
     /*0x496*/ u16 registeredItem; // registered for use with SELECT button

@@ -29,7 +29,8 @@ SootopolisCity_MysteryEventsHouse_B1F_EventScript_BattleVisitingTrainer:: @ 8227
 	compare VAR_RESULT, 2
 	call_if_eq SootopolisCity_MysteryEventsHouse_B1F_EventScript_BattleLost
 	closemessage
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	applymovement OBJ_EVENT_ID_PLAYER, SootopolisCity_MysteryEventsHouse_B1F_Movement_PlayerExitBasement
 	waitmovement 0
 	special LoadPlayerParty

@@ -1549,3 +1549,13 @@ static const u8 sOldSeaMapDesc[] = _(
     "A faded sea chart\n"
     "that shows the way\n"
     "to a certain island.");
+
+/**
+ * BEGINNING OF ADDED CODE COMPARED TO ORIGNAL CODE FORKED FROM
+ */
+
+// Desc for player's PokeAsh case currently in the "Key Items" pocket
+static const u8 sPokeAshesCaseDesc[]= _(
+    "A case that holds\n"
+    "The ashes of your\n"
+    "dead POKéMON.");

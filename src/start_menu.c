@@ -1341,6 +1341,24 @@ static void ShowSaveInfoWindow(void)
         AddTextPrinterParameterized(sSaveInfoWindowId, 1, gStringVar4, xOffset, yOffset, 0xFF, NULL);
     }
 
+    /**
+     * START OF IF STATEMENTS ADDED TO ORIGINAL CODE
+     */
+        // Add this stat to save game after player reveives PokeAsh case
+    if (FlagGet(FLAG_RECEIVED_POKEASHES_CASE) == TRUE)
+    {
+        // Print Pokemon Ashes Count
+        yOffset += 16;
+        AddTextPrinterParameterized(sSaveInfoWindowId, 1, gText_SavingDeathCount, 0, yOffset, 0xFF, NULL);
+        BufferSaveMenuText(SAVE_MENU_DEAD, gStringVar4, color);
+        xOffset = GetStringRightAlignXOffset(1, gStringVar4, 0x70);
+        AddTextPrinterParameterized(sSaveInfoWindowId, 1, gStringVar4, xOffset, yOffset, 0xFF, NULL);
+    }
+
+    /**
+     * END OF ADDED IF STAEMENTS
+     */
+
     // Print play time
     yOffset += 16;
     AddTextPrinterParameterized(sSaveInfoWindowId, 1, gText_SavingTime, 0, yOffset, 0xFF, NULL);

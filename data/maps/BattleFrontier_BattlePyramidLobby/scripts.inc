@@ -57,7 +57,8 @@ BattleFrontier_BattlePyramidLobby_EventScript_GiveBattlePoints:: @ 82507DA
 	frontier_checkairshow
 	special LoadPlayerParty
 	pyramid_clearhelditems
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	message BattleFrontier_BattlePyramidLobby_Text_UsedBattleBagWillBeKept
 	waitmessage
 	playse SE_EXPMAX
@@ -81,7 +82,8 @@ BattleFrontier_BattlePyramidLobby_EventScript_LostChallenge:: @ 8250852
 	frontier_checkairshow
 	special LoadPlayerParty
 	pyramid_clearhelditems
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	lockall
 	message BattleFrontier_BattlePyramidLobby_Text_DisappointingHereIsBag
 	waitmessage
@@ -169,7 +171,8 @@ BattleFrontier_BattlePyramidLobby_EventScript_EnterChallenge:: @ 8250A21
 	call BattleFrontier_BattlePyramidLobby_EventScript_WalkToPanelAndReceiveBag
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, 0
 	setvar VAR_RESULT, 0
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	warp MAP_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR, 255, 1, 1
 	setvar VAR_TEMP_0, 0
 	waitstate

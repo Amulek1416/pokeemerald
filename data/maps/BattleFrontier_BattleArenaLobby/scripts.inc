@@ -73,7 +73,8 @@ BattleFrontier_BattleArenaLobby_EventScript_LostChallenge:: @ 8255D2B
 BattleFrontier_BattleArenaLobby_EventScript_SaveAfterChallenge:: @ 8255D59
 	frontier_checkairshow
 	special LoadPlayerParty
-	special HealPlayerParty
+	@ special HealPlayerParty @  ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	arena_save 0
 	playse SE_SAVE
 	waitse

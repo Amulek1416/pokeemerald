@@ -121,7 +121,8 @@ BattleFrontier_BattleTowerLobby_EventScript_AskSaveBattle:: @ 823E84D
 	waitmessage
 	frontier_checkairshow
 	special LoadPlayerParty
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	tower_save 0
 	playse SE_SAVE
 	waitse

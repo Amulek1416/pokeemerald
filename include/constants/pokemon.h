@@ -83,8 +83,13 @@
 #define NUM_EV_STATS     NUM_STATS - 1 // excludes HP
 #define NUM_BATTLE_STATS NUM_STATS + 2 // includes Accuracy and Evasion
 
-// Shiny odds
-#define SHINY_ODDS 8 // Actual probability is SHINY_ODDS/65536
+/**
+ * MODIFIED MACRO
+ * 
+ * Original code had SHINY_ODDS set to 8. 
+ * This was changed cause I wanted it to be, that's all
+ */
+#define SHINY_ODDS 65500 // Actual probability is SHINY_ODDS/65536
 
 // Flags for Get(Box)MonData / Set(Box)MonData
 #define MON_DATA_PERSONALITY        0

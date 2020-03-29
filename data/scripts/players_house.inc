@@ -367,9 +367,15 @@ PlayersHouse_1F_EventScript_HealParty:: @ 8292A9E
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
 	incrementgamestat GAME_STAT_RESTED_AT_HOME
+	call_if_unset FLAG_RECEIVED_POKEASHES_CASE, PlayersHouse_1F_EventScript_DeadPkmn @ ADDED CODE
 	msgbox PlayersHouse_1F_Text_TakeCareHoney, MSGBOX_DEFAULT
 	release
 	end
+
+@ ADDED FUNCTION
+PlayersHouse_1F_EventScript_DeadPkmn::
+	msgbox PlayersHouse_1F_DeadPkmn, MSGBOX_DEFAULT
+	return
 
 PlayersHouse_1F_EventScript_DidYouMeetProfBirch:: @ 8292AB0
 	msgbox PlayersHouse_1F_Text_DidYouMeetProfBirch, MSGBOX_DEFAULT

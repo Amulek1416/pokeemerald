@@ -69,7 +69,8 @@ BattleFrontier_BattlePyramid_EventScript_WarpToLobbyLost:: @ 8252B42
 BattleFrontier_BattlePyramid_EventScript_WarpToLobby:: @ 8252B66
 	pyramid_updatelight 0, PYRAMID_LIGHT_SET_RADIUS
 	pyramid_clearhelditems
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PYRAMID_LOBBY, 255, 7, 13
 	waitstate
 	end

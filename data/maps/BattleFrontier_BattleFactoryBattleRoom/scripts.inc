@@ -83,7 +83,8 @@ BattleFrontier_BattleFactoryBattleRoom_EventScript_BattleOpponent:: @ 825AEA7
 	waitmessage
 	closemessage
 	frontier_set FRONTIER_DATA_RECORD_DISABLED, FALSE
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	setvar VAR_0x8004, SPECIAL_BATTLE_FACTORY
 	setvar VAR_0x8005, 0
 	special DoSpecialTrainerBattle
@@ -181,7 +182,8 @@ BattleFrontier_BattleFactoryBattleRoom_EventScript_DefeatedNolandGold:: @ 825B09
 BattleFrontier_BattleFactoryBattleRoom_EventScript_DoNolandBattle:: @ 825B0E0
 	closemessage
 	frontier_set FRONTIER_DATA_RECORD_DISABLED, FALSE
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	setvar VAR_0x8004, SPECIAL_BATTLE_FACTORY
 	setvar VAR_0x8005, 0
 	special DoSpecialTrainerBattle

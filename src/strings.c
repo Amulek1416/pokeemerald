@@ -1817,3 +1817,14 @@ const u8 gText_Answer[] = _("ANSWER");
 const u8 gText_PokeBalls[] = _("POKé BALLS");
 const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
+
+/**
+ * START OF STRINGS ADDED TO ORIGINAL CODE
+ */
+
+const u8 gText_PokeAshesCaseCount[] = _("Number of dead POKéMON: {STR_VAR_1}{PAUSE_UNTIL_PRESS}");
+const u8 gText_ContinueMenuDeathCount[] = _("POKé Ashes");
+const u8 gText_SavingDeathCount[] = _("POKé Ashes");
+/**
+ * END OF STRINGS ADDED
+ */

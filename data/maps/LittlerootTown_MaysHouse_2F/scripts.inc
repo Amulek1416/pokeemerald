@@ -327,7 +327,8 @@ LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC:: @ 81F958F
 	releaseall
 	end
 
-RivalsHouse_2F_Text_MayWhoAreYou: @ 81F959C
+@ ORIGINAL TEXT
+RivalsHouse_2F_Text_MayWhoAreYou_ORIGINAL: @ 81F959C
 	.string "Huh?\n"
 	.string "Who… Who are you?\p"
 	.string "… … … … … … … …\n"
@@ -346,6 +347,26 @@ RivalsHouse_2F_Text_MayWhoAreYou: @ 81F959C
 	.string "Oh, this is silly, isn't it?\n"
 	.string "I… I've just met you, {PLAYER}{KUN}.\p"
 	.string "Eheheh…\p"
+	.string "Oh, no! I forgot!\p"
+	.string "I was supposed to go help Dad catch\n"
+	.string "some wild POKéMON!\p"
+	.string "{PLAYER}{KUN}, I'll catch you later!$"
+
+@ MODIFIED TEXT
+RivalsHouse_2F_Text_MayWhoAreYou: @ 81F959C
+	.string "HEY!\p"
+	.string "You were trying to steal my POKéMON!\p"
+	.string "… … … … … … … …\n"
+	.string "… … … … … … … …\p"
+	.string "Oh, you're {PLAYER}{KUN}.\n"
+	.string "So your move was today.\p"
+	.string "Um… I'm MAY.\n"
+	.string "Glad to meet you!\p"
+	.string "I…\n"
+	.string "I'm sorry for yelling. I just thought you\l"
+	.string "were trying to take my POKéMON from me...\p"
+	.string "I… I heard about you, {PLAYER}{KUN}, from\n"
+	.string "my dad, PROF. BIRCH.\p"
 	.string "Oh, no! I forgot!\p"
 	.string "I was supposed to go help Dad catch\n"
 	.string "some wild POKéMON!\p"

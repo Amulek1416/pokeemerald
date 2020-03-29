@@ -1379,7 +1379,8 @@ void sub_80141A4(void)
 
 void sub_8014210(u16 battleFlags)
 {
-    HealPlayerParty();
+    // HealPlayerParty(); // CODE FROM ORIGNAL
+    HealPlayerParty(TRUE); // MODIFIED FROM ORIGNAL
     SavePlayerParty();
     LoadPlayerBag();
     gLinkPlayers[0].linkType = LINKTYPE_BATTLE;
@@ -1464,7 +1465,8 @@ void sub_801440C(u8 taskId)
     case 1:
         CleanupOverworldWindowsAndTilemaps();
         sub_80143E4(gBlockSendBuffer, TRUE);
-        HealPlayerParty();
+        // HealPlayerParty(); // CODE FROM ORIGNAL
+        HealPlayerParty(TRUE); // MODIFIED FROM ORIGNAL
         SavePlayerParty();
         LoadPlayerBag();
         sub_8014304(MAP_GROUP(BATTLE_COLOSSEUM_2P), MAP_NUM(BATTLE_COLOSSEUM_2P), 6, 8, USING_SINGLE_BATTLE);
@@ -1472,7 +1474,8 @@ void sub_801440C(u8 taskId)
         break;
     case 2:
         CleanupOverworldWindowsAndTilemaps();
-        HealPlayerParty();
+        // HealPlayerParty(); // CODE FROM ORIGNAL
+        HealPlayerParty(TRUE); // MODIFIED FROM ORIGNAL
         SavePlayerParty();
         LoadPlayerBag();
         sub_80143E4(gBlockSendBuffer, TRUE);
@@ -1481,7 +1484,8 @@ void sub_801440C(u8 taskId)
         break;
     case 3:
         CleanupOverworldWindowsAndTilemaps();
-        HealPlayerParty();
+        // HealPlayerParty(); // CODE FROM ORIGNAL
+        HealPlayerParty(TRUE); // MODIFIED FROM ORIGNAL
         SavePlayerParty();
         LoadPlayerBag();
         sub_80143E4(gBlockSendBuffer, TRUE);

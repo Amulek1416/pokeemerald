@@ -364,7 +364,8 @@ CableClub_EventScript_TryEnterColosseum:: @ 8276F60
 	end
 
 CableClub_EventScript_EnterColosseum:: @ 8276FBD
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	special SavePlayerParty
 	special LoadPlayerBag
 	copyvar VAR_CABLE_CLUB_STATE, VAR_0x8004
@@ -950,7 +951,8 @@ CableClub_EventScript_EnterUnionRoom:: @ 827759F
 	goto_if_eq CableClub_EventScript_AbortLink
 	msgbox CableClub_Text_EnjoyUnionRoom, MSGBOX_DEFAULT
 	closemessage
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	setvar VAR_0x8004, USING_UNION_ROOM
 	copyvar VAR_CABLE_CLUB_STATE, VAR_0x8004
 	call CableClub_EventScript_OpenUnionRoomBarrier

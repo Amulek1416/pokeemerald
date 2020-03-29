@@ -4805,7 +4805,7 @@ static const union AnimCmd sAnim_UNOWN_QMARK_1[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd *const sAnims_NONE[] ={
+static const union AnimCmd *const sAnims_HUMAN[] ={
     sAnim_GeneralFrame0,
     sAnim_NONE_1,
 };
@@ -6950,7 +6950,7 @@ static const union AnimCmd *const sAnims_UNOWN_QMARK[] ={
 
 const union AnimCmd *const *const gMonFrontAnimsPtrTable[] =
 {
-    ANIM_CMD(NONE),
+    ANIM_CMD(HUMAN),
     ANIM_CMD(BULBASAUR),
     ANIM_CMD(IVYSAUR),
     ANIM_CMD(VENUSAUR),

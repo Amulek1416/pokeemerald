@@ -460,7 +460,8 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_TuckerDraw:: @ 824C436
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_DoDomeBattle:: @ 824C440
 	frontier_set FRONTIER_DATA_RECORD_DISABLED, FALSE
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	setvar VAR_0x8004, SPECIAL_BATTLE_DOME
 	setvar VAR_0x8005, 0
 	setvar VAR_TEMP_9, 1
@@ -468,7 +469,8 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_DoDomeBattle:: @ 824C440
 	waitstate
 	setvar VAR_TEMP_9, 0
 	dome_restorehelditems
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	dome_resetsketch
 	return
 

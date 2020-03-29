@@ -721,7 +721,8 @@ SecretBase_EventScript_BattleTrainer:: @ 8276286
 	call_if_eq SecretBase_EventScript_WonSecretBaseBattle
 	compare VAR_RESULT, B_OUTCOME_LOST
 	call_if_eq SecretBase_EventScript_LostSecretBaseBattle
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	release
 	end
 

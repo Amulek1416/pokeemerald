@@ -1,6 +1,6 @@
 const struct CompressedSpritePalette gMonShinyPaletteTable[] =
 {
-    SPECIES_SHINY_PAL(NONE, gMonShinyPalette_CircledQuestionMark),
+    SPECIES_SHINY_PAL(HUMAN, gTrainerPalette_Brendan),
     SPECIES_SHINY_PAL(BULBASAUR, gMonShinyPalette_Bulbasaur),
     SPECIES_SHINY_PAL(IVYSAUR, gMonShinyPalette_Ivysaur),
     SPECIES_SHINY_PAL(VENUSAUR, gMonShinyPalette_Venusaur),

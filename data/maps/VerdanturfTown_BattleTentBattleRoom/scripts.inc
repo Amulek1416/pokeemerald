@@ -76,7 +76,8 @@ VerdanturfTown_BattleTentBattleRoom_EventScript_DefeatedOpponent:: @ 82023C8
 	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	playfanfare MUS_ME_ASA
 	waitfanfare
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 
 VerdanturfTown_BattleTentBattleRoom_EventScript_AskContinueChallenge:: @ 820243C
 	frontier_get FRONTIER_DATA_BATTLE_NUM

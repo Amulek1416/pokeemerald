@@ -368,7 +368,8 @@ RivalsHouse_1F_Text_ShouldGoHomeEverySoOften: @ 81F8E01
 	.string "She might not say it, but I'm sure she\n"
 	.string "worries about you, {PLAYER}{KUN}.$"
 
-RivalsHouse_1F_Text_MayWhoAreYou: @ 81F8EC6
+@ ORIGINAL TEXT
+RivalsHouse_1F_Text_MayWhoAreYou_ORIGINAL: @ 81F8EC6
 	.string "Huh?\n"
 	.string "Who… Who are you?\p"
 	.string "… … … … … … … …\n"
@@ -391,6 +392,27 @@ RivalsHouse_1F_Text_MayWhoAreYou: @ 81F8EC6
 	.string "I was supposed to go help Dad catch\n"
 	.string "some wild POKéMON!\p"
 	.string "{PLAYER}{KUN}, I'll catch you later!$"
+
+@ MODIFIED TEXT
+RivalsHouse_1F_Text_MayWhoAreYou: @ 81F8EC6
+	.string "HEY!\p"
+	.string "You were trying to steal my POKéMON!\p"
+	.string "… … … … … … … …\n"
+	.string "… … … … … … … …\p"
+	.string "Oh, you're {PLAYER}{KUN}.\n"
+	.string "So your move was today.\p"
+	.string "Um… I'm MAY.\n"
+	.string "Glad to meet you!\p"
+	.string "I…\n"
+	.string "I'm sorry for yelling. I just thought you\l"
+	.string "were trying to take my POKéMON from me...\p"
+	.string "I… I heard about you, {PLAYER}{KUN}, from\n"
+	.string "my dad, PROF. BIRCH.\p"
+	.string "Oh, no! I forgot!\p"
+	.string "I was supposed to go help Dad catch\n"
+	.string "some wild POKéMON!\p"
+	.string "{PLAYER}{KUN}, I'll catch you later!$"
+
 
 RivalsHouse_1F_Text_BrendanWhoAreYou: @ 81F90B4
 	.string "Hey!\n"

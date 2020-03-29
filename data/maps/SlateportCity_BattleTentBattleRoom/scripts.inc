@@ -55,7 +55,8 @@ SlateportCity_BattleTentBattleRoom_EventScript_EnterRoom:: @ 82099BE
 	msgbox gStringVar4, MSGBOX_DEFAULT
 	waitmessage
 	closemessage
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	setvar VAR_0x8004, SPECIAL_BATTLE_FACTORY
 	setvar VAR_0x8005, 0
 	special DoSpecialTrainerBattle

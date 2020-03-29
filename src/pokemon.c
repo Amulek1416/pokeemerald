@@ -63,7 +63,9 @@ static bool8 ShouldGetStatBadgeBoost(u16 flagId, u8 battlerId);
 static u16 GiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move);
 static bool8 ShouldSkipFriendshipChange(void);
 
-// EWRAM vars
+/**
+ * EWRAM vars
+ */
 EWRAM_DATA static u8 sLearningMoveTableID = 0;
 EWRAM_DATA u8 gPlayerPartyCount = 0;
 EWRAM_DATA u8 gEnemyPartyCount = 0;
@@ -71,6 +73,19 @@ EWRAM_DATA struct Pokemon gPlayerParty[PARTY_SIZE] = {0};
 EWRAM_DATA struct Pokemon gEnemyParty[PARTY_SIZE] = {0};
 EWRAM_DATA struct SpriteTemplate gMultiuseSpriteTemplate = {0};
 EWRAM_DATA struct Unknown_806F160_Struct *gUnknown_020249B4[2] = {NULL};
+
+/**
+ *  START OF EWRAM VARS ADDED TO ORIGINAL CODE
+ */
+    // Added counts to keep track of the total amount 
+    // of the player's pokemon that die. As well as 
+    // an array filled with the data of the killed pokemon
+EWRAM_DATA u8 gPlayerDeadPokemonCount = 0;
+EWRAM_DATA u16 gPlayerTotalDeathCount = 0;
+EWRAM_DATA struct Pokemon gPlayerDeadPokemon[MAX_DEAD_POKEMON] = {0};
+/**
+* END OF ADDED EWRAM VARS
+*/
 
 // const rom data
 #include "data/battle_moves.h"

@@ -350,6 +350,13 @@ PlayersHouse_1F_Text_YouShouldRestABit: @ 81F7D08
 	.string "You look a little tired.\p"
 	.string "I think you should rest a bit.$"
 
+@ ADDED TEXT
+PlayersHouse_1F_DeadPkmn::
+	.string "MOM: Remember, if a POKéMON\n"
+	.string "dies to take the remains\l"
+	.string "to the POKéMON CENTER to be\l"
+	.string "disposed of!$"
+
 PlayersHouse_1F_Text_TakeCareHoney: @ 81F7D5C
 	.string "MOM: Take care, honey!$"
 

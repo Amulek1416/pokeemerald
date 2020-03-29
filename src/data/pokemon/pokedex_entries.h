@@ -2,9 +2,9 @@ const struct PokedexEntry gPokedexEntries[] =
 {
     [NATIONAL_DEX_NONE] =
     {
-        .categoryName = _("UNKNOWN"),
-        .height = 0,
-        .weight = 0,
+        .categoryName = _("HUMAN SHAPE"),
+        .height = 40,
+        .weight = 100,
         .description = gDummyPokedexText,
         .pokemonScale = 256,
         .pokemonOffset = 0,

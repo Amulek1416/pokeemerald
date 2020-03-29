@@ -386,10 +386,23 @@ void DoWhiteOut(void)
 {
     ScriptContext2_RunNewScript(EventScript_WhiteOut);
     SetMoney(&gSaveBlock1Ptr->money, GetMoney(&gSaveBlock1Ptr->money) / 2);
-    HealPlayerParty();
     Overworld_ResetStateAfterWhiteOut();
     SetWarpDestinationToLastHealLocation();
     WarpIntoMap();
+
+/**
+ * START OF CODE MODIFIED FROM ORIGINAL CODE
+ */
+    // ORIGINAL
+    // HealPlayerParty();
+
+    // MODIFIED
+    HealPlayerParty(FALSE);
+/**
+ * END OF MODIFIED CODE
+ */
+
+    // TODO: Make it where the game either restarts, or the trainer now hast to battle
 }
 
 void Overworld_ResetStateAfterFly(void)

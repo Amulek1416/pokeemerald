@@ -197,16 +197,54 @@ void LoadObjectEvents(void)
         gObjectEvents[i] = gSaveBlock1Ptr->objectEvents[i];
 }
 
+/**
+ * BEGINNING OF ADDED FUNCTIONS COMPARED TO ORIGNAL CODE FORKED FROM
+ */
+
+// Function to save player's dead pokemon. Called when player saves the game
+void SavePlayerDeadPokemon(void)
+{
+    int i;
+
+    gSaveBlock1Ptr->playerDeadPokemonCount = gPlayerDeadPokemonCount;
+    gSaveBlock1Ptr->totalDeathCount = gPlayerTotalDeathCount;
+
+    for(i = 0; i < MAX_DEAD_POKEMON; i++)
+        gSaveBlock1Ptr->playerDeadPokemon[i] = gPlayerDeadPokemon[i];
+}
+
+// Function to load player's dead pokemon. Called when player loads a saved game
+void LoadPlayerDeadPokemon(void)
+{
+    int i;
+
+    gPlayerDeadPokemonCount = gSaveBlock1Ptr->playerDeadPokemonCount;
+    gPlayerTotalDeathCount = gSaveBlock1Ptr->totalDeathCount;
+
+    for(i = 0; i < MAX_DEAD_POKEMON; i++)
+        gPlayerDeadPokemon[i] = gSaveBlock1Ptr->playerDeadPokemon[i];
+}
+
+/**
+ * END OF ADDED FUNCTIONS
+ */
+
 void SaveSerializedGame(void)
 {
     SavePlayerParty();
     SaveObjectEvents();
+
+    // Added from original code
+    SavePlayerDeadPokemon();
 }
 
 void LoadSerializedGame(void)
 {
     LoadPlayerParty();
     LoadObjectEvents();
+
+    // Added from original code
+    LoadPlayerDeadPokemon();
 }
 
 void LoadPlayerBag(void)

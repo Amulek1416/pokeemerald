@@ -68,6 +68,9 @@
 #define FRONTIER_MULTI_PARTY_SIZE   2
 #define MAX_FRONTIER_PARTY_SIZE     FRONTIER_DOUBLES_PARTY_SIZE
 
+// ADDED TO ORIGINAL CODE
+#define MAX_DEAD_POKEMON            50 // Max num of PokeAshes player can carry
+
 // string lengths
 #define ITEM_NAME_LENGTH 14
 #define POKEMON_NAME_LENGTH 10

@@ -5,14 +5,15 @@ OldaleTown_MapScripts:: @ 81E8EA2
 OldaleTown_OnTransition: @ 81E8EA8
 	call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_OLDALE_TOWN
-	call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
+	@call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance @ ORIGINAL CODE
+	call_if_unset STILL_DEVELOPING, OldaleTown_EventScript_BlockWestEntrance @ MODIFIED CODE
 	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
 	end
 
 @ This script seems pointless because nothing uses VAR_OLDALE_TOWN_STATE
 OldaleTown_EventScript_SetOldaleState:: @ 81E8ECC
-	setvar VAR_OLDALE_TOWN_STATE, 1
+	@setvar VAR_OLDALE_TOWN_STATE, 1
 	return
 
 OldaleTown_EventScript_BlockWestEntrance:: @ 81E8ED2
@@ -72,6 +73,7 @@ OldaleTown_EventScript_GoToMartEast:: @ 81E8F75
 OldaleTown_EventScript_ExplainPokemonMart:: @ 81E8F8C
 	msgbox OldaleTown_Text_ThisIsAPokemonMart, MSGBOX_DEFAULT
 	giveitem ITEM_POTION
+	giveitem ITEM_MASTER_BALL
 	compare VAR_RESULT, 0
 	goto_if_eq OldaleTown_EventScript_BagIsFull
 	msgbox OldaleTown_Text_PotionExplanation, MSGBOX_DEFAULT
@@ -188,11 +190,24 @@ OldaleTown_Movement_Unknown2: @ 81E9013
 	walk_up
 	step_end
 
+@ ORIGINAL FUNCTION
+@OldaleTown_EventScript_FootprintsMan_ORIGINAL:: @ 81E901F
+@	lock
+@	faceplayer
+@	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_NotBlockingPath
+@	msgbox OldaleTown_Text_DiscoveredFootprints, MSGBOX_DEFAULT
+@	closemessage
+@	applymovement 3, Common_Movement_FaceOriginalDirection
+@	waitmovement 0
+@	release
+@	end
+
+@ MODIFIED FUNCTION
 OldaleTown_EventScript_FootprintsMan:: @ 81E901F
 	lock
 	faceplayer
-	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_NotBlockingPath
-	msgbox OldaleTown_Text_DiscoveredFootprints, MSGBOX_DEFAULT
+	goto_if_set FLAG_STILL_DEVELOPING_0, OldaleTown_EventScript_NotBlockingPath
+	msgbox OldaleTown_Text_StillDeveloping, MSGBOX_DEFAULT
 	closemessage
 	applymovement 3, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -204,15 +219,23 @@ OldaleTown_EventScript_BlockedPath:: @ 81E903F
 	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_PlayerStepBack
 	applymovement 3, OldaleTown_Movement_BackUp
 	waitmovement 0
-	msgbox OldaleTown_Text_WaitDontComeInHere, MSGBOX_DEFAULT
+	@msgbox OldaleTown_Text_WaitDontComeInHere, MSGBOX_DEFAULT @ ORIGINAL CODE
+	msgbox OldaleTown_Text_StillDeveloping, MSGBOX_DEFAULT @ MODIFIED CODE
 	closemessage
 	applymovement 3, OldaleTown_Movement_ReturnToOriginalPosition
 	waitmovement 0
 	releaseall
 	end
 
+@ ORIGINAL FUNCTION
+@OldaleTown_EventScript_NotBlockingPath_ORIGINAL:: @ 81E9066
+@	msgbox OldaleTown_Text_FinishedSketchingFootprints, MSGBOX_DEFAULT
+@	release
+@	end
+
+@ MODIFIED FUNCTION
 OldaleTown_EventScript_NotBlockingPath:: @ 81E9066
-	msgbox OldaleTown_Text_FinishedSketchingFootprints, MSGBOX_DEFAULT
+	msgbox OldaleTown_Text_FinishedDeveloping, MSGBOX_DEFAULT
 	release
 	end
 
@@ -354,26 +377,57 @@ OldaleTown_Text_IWorkAtPokemonMart: @ 81E91C0
 	.string "I work at a POKéMON MART.\p"
 	.string "Can I get you to come with me?$"
 
+@ ORIGINAL TEXT
+@OldaleTown_Text_ThisIsAPokemonMart_ORIGINAL: @ 81E91FD
+@	.string "This is a POKéMON MART.\n"
+@	.string "Just look for our blue roof.\p"
+@	.string "We sell a variety of goods including\n"
+@	.string "POKé BALLS for catching POKéMON.\p"
+@	.string "Here, I'd like you to have this as\n"
+@	.string "a promotional item.$"
+
+@ MODIFIED TEXT
 OldaleTown_Text_ThisIsAPokemonMart: @ 81E91FD
 	.string "This is a POKéMON MART.\n"
 	.string "Just look for our blue roof.\p"
 	.string "We sell a variety of goods including\n"
-	.string "POKé BALLS for catching POKéMON.\p"
+	.string "POKé BALLS for enslaving POKéMON.\p"
 	.string "Here, I'd like you to have this as\n"
 	.string "a promotional item.$"
 
+@ ORIGINAL TEXT
+@OldaleTown_Text_PotionExplanation_ORIGINAL: @ 81E92AF
+@	.string "A POTION can be used anytime, so it's\n"
+@	.string "even more useful than a POKéMON CENTER\l"
+@	.string "in certain situations.$"
+
+@ MODIFIED TEXT
 OldaleTown_Text_PotionExplanation: @ 81E92AF
 	.string "A POTION can be used anytime, so it's\n"
 	.string "even more useful than a POKéMON CENTER\l"
-	.string "in certain situations.$"
+	.string "in certain situations.\p"
+	.string "The MASTER BALL is just in case you\n"
+	.string "run out of all of your pokemon in your\l"
+	.string "party AND in your PC.\p"
+	.string "Use it wisely!$"
 
-OldaleTown_Text_WaitDontComeInHere: @ 81E9313
+@ ORIGINAL TEXT NOT BEING USED
+@OldaleTown_Text_WaitDontComeInHere: @ 81E9313
+@	.string "Aaaaah! Wait!\n"
+@	.string "Please don't come in here.\p"
+@	.string "I just discovered the footprints of\n"
+@	.string "a rare POKéMON!\p"
+@	.string "Wait until I finish sketching\n"
+@	.string "them, okay?$"
+
+@ ADDED TEXT
+OldaleTown_Text_StillDeveloping:
 	.string "Aaaaah! Wait!\n"
-	.string "Please don't come in here.\p"
-	.string "I just discovered the footprints of\n"
-	.string "a rare POKéMON!\p"
-	.string "Wait until I finish sketching\n"
-	.string "them, okay?$"
+	.string "Please don't come in here!\p"
+	.string "I am still in the process of\n"
+	.string "developing this part of the game!\p"
+	.string "Wait until I release an\n"
+	.string "update, okay?$"
 
 OldaleTown_Text_DiscoveredFootprints: @ 81E939A
 	.string "I just discovered the footprints of\n"
@@ -381,23 +435,41 @@ OldaleTown_Text_DiscoveredFootprints: @ 81E939A
 	.string "Wait until I finish sketching\n"
 	.string "them, okay?$"
 
-OldaleTown_Text_FinishedSketchingFootprints: @ 81E93F8
-	.string "I finished sketching the footprints of\n"
-	.string "a rare POKéMON.\p"
-	.string "But it turns out they were only my\n"
-	.string "own footprints…$"
+@ ORIGINAL TEXT NOT BEING USED
+@OldaleTown_Text_FinishedSketchingFootprints: @ 81E93F8
+@	.string "I finished sketching the footprints of\n"
+@	.string "a rare POKéMON.\p"
+@	.string "But it turns out they were only my\n"
+@	.string "own footprints…$"
 
+@ ADDED TEXT
+OldaleTown_Text_FinishedDeveloping:
+	.string "This part of the game is complete!\p"
+	.string "Enjoy the rest of the game!$"
+
+@ ORIGINAL TEXT
+@OldaleTown_Text_MayLetsGoBack_ORIGINAL: @ 81E9462
+@	.string "MAY: {PLAYER}{KUN}!\n"
+@	.string "Over here!\l"
+@	.string "Let's hurry home!$"
+
+@ MODIFIED TEXT
 OldaleTown_Text_MayLetsGoBack: @ 81E9462
 	.string "MAY: {PLAYER}{KUN}!\n"
-	.string "Over here!\l"
-	.string "Let's hurry home!$"
+	.string "YOU'RE A MURDERER!$"
 
 OldaleTown_Text_BrendanLetsGoBack: @ 81E948A
 	.string "BRENDAN: I'm heading back to my dad's\n"
 	.string "LAB now.\l"
 	.string "{PLAYER}, you should hustle back, too.$"
 
+@ ORIGINAL TEXT
+@OldaleTown_Text_CitySign_ORIGINAL: @ 81E94DA
+@	.string "OLDALE TOWN\n"
+@	.string "“Where things start off scarce.”$"
+
+@ MODIFIED TEXT
 OldaleTown_Text_CitySign: @ 81E94DA
 	.string "OLDALE TOWN\n"
-	.string "“Where things start off scarce.”$"
-
+	.string "“Where things start off scarce.”\l"
+	.string "Like this plotline...$"

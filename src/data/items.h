@@ -4884,4 +4884,23 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
+
+
+    /**
+     * BEGINNING OF ADDED CODE COMPARED TO ORIGNAL CODE FORKED FROM
+     */
+    
+    // To carry the ashes of the player's dead Pokemon
+    [ITEM_POKEASHES_CASE] =
+    {
+        .name = _("POKE ASHES"),
+        .itemId = ITEM_POKEASHES_CASE,
+        .price = 0,
+        .description = sPokeAshesCaseDesc,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
 };

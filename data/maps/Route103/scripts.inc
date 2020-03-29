@@ -26,6 +26,7 @@ Route103_EventScript_Rival:: @ 81EC3C1
 	goto_if_eq Route103_EventScript_RivalBrendan
 	end
 
+@ CASES 3-9 HAS BEEN ADDED TO THE ORIGINAL CODE
 Route103_EventScript_RivalMay:: @ 81EC3DA
 	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
@@ -41,8 +42,16 @@ Route103_EventScript_RivalMay:: @ 81EC3DA
 	case 0, Route103_EventScript_StartMayBattleTreecko
 	case 1, Route103_EventScript_StartMayBattleTorchic
 	case 2, Route103_EventScript_StartMayBattleMudkip
+	case 3, Route103_EventScript_StartMayBattleTreecko
+	case 4, Route103_EventScript_StartMayBattleTorchic
+	case 5, Route103_EventScript_StartMayBattleMudkip
+	case 6, Route103_EventScript_StartMayBattleTreecko
+	case 7, Route103_EventScript_StartMayBattleTorchic
+	case 8, Route103_EventScript_StartMayBattleMudkip
+	case 9, Route103_EventScript_StartMayBattlePika
 	end
 
+@ CASES 3-9 HAS BEEN ADDED TO THE ORIGINAL CODE
 Route103_EventScript_RivalBrendan:: @ 81EC434
 	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
@@ -58,6 +67,19 @@ Route103_EventScript_RivalBrendan:: @ 81EC434
 	case 0, Route103_EventScript_StartBrendanBattleTreecko
 	case 1, Route103_EventScript_StartBrendanBattleTorchic
 	case 2, Route103_EventScript_StartBrendanBattleMudkip
+	case 3, Route103_EventScript_StartBrendanBattleTreecko
+	case 4, Route103_EventScript_StartBrendanBattleTorchic
+	case 5, Route103_EventScript_StartBrendanBattleMudkip
+	case 6, Route103_EventScript_StartBrendanBattleTreecko
+	case 7, Route103_EventScript_StartBrendanBattleTorchic
+	case 8, Route103_EventScript_StartBrendanBattleMudkip
+	case 9, Route103_EventScript_StartBrendanBattlePika
+	end
+
+@ ADDED FUNCTION
+Route103_EventScript_StartMayBattlePika:: @ 81EC48E
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_PIKA, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartMayBattleTreecko:: @ 81EC48E
@@ -73,6 +95,12 @@ Route103_EventScript_StartMayBattleTorchic:: @ 81EC49E
 Route103_EventScript_StartMayBattleMudkip:: @ 81EC4AE
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_MUDKIP, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
+	end
+
+@ ADDED FUNCTION
+Route103_EventScript_StartBrendanBattlePika:: @ 81EC4BE
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_PIKA, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_StartBrendanBattleTreecko:: @ 81EC4BE
@@ -304,11 +332,18 @@ Route103_Text_MayLetsBattle: @ 81EC7DE
 	.string "I'll give you a taste of what being\n"
 	.string "a TRAINER is like.$"
 
-Route103_Text_MayDefeated: @ 81EC881
+@ ORIGINAL TEXT
+Route103_Text_MayDefeated_ORIGINAL: @ 81EC881
 	.string "Wow! That's great!\n"
 	.string "{PLAYER}{KUN}, you're pretty good!$"
 
-Route103_Text_MayTimeToHeadBack: @ 81EC8AE
+@ MOFIFIED TEXT
+Route103_Text_MayDefeated: @ 81EC881
+	.string "MAY: NNNNNNNNOOOOOOOOOOOOOOOO!!!!\n"
+	.string "You killed my POKéMON!!! :'(\n"
+
+@ ORIGINAL TEXT
+Route103_Text_MayTimeToHeadBack_ORIGINAL: @ 81EC8AE
 	.string "MAY: I think I know why my dad has\n"
 	.string "an eye out for you now.\p"
 	.string "I mean, you just got that POKéMON,\n"
@@ -317,6 +352,12 @@ Route103_Text_MayTimeToHeadBack: @ 81EC8AE
 	.string "kind of POKéMON easily.\p"
 	.string "Well, it's time to head back to\n"
 	.string "the LAB.$"
+
+@ MOFIFIED TEXT
+Route103_Text_MayTimeToHeadBack: @ 81EC8AE
+	.string "This was your plan this entire\n"
+	.string "time! You were trying to kill him!\n"
+	.string "I'm going to get tell my dad!$"
 
 Route103_Text_BrendanRoute103Pokemon: @ 81EC989
 	.string "BRENDAN: Okay, so it's this one and\n"
@@ -343,16 +384,33 @@ Route103_Text_BrendanTimeToHeadBack: @ 81ECA79
 	.string "could befriend any POKéMON with ease.\p"
 	.string "We should head back to the LAB.$"
 
-Route103_Text_ShouldHaveBroughtPotion: @ 81ECB73
+@ ORIGINAL TEXT
+Route103_Text_ShouldHaveBroughtPotion_ORIGINAL: @ 81ECB73
 	.string "My POKéMON is staggeringly tired…\n"
 	.string "I should have brought a POTION…$"
+
+@ MOFIFIED TEXT
+Route103_Text_ShouldHaveBroughtPotion: @ 81ECB73
+	.string "My POKéMON is staggeringly tired…\n"
+	.string "I should have brought a POTION…\p"
+	.string "............ ............\n"
+	.string "............ ............\p"
+	.string "Oh! I should push it past\n"
+	.string "exhaustion?\l"
+	.string "Okay!$"
 
 Route103_Text_ShortcutToOldale: @ 81ECBB5
 	.string "If you cross the sea from here,\n"
 	.string "it'll be a shortcut to OLDALE TOWN.\p"
 	.string "Fufufu, that's useful, isn't it?$"
 
-Route103_Text_RouteSign: @ 81ECC1A
+@ ORIGINAL TEXT
+Route103_Text_RouteSign_ORIGINAL: @ 81ECC1A
 	.string "ROUTE 103\n"
 	.string "{DOWN_ARROW} OLDALE TOWN$"
 
+@ MOFIFIED TEXT
+Route103_Text_RouteSign: @ 81ECC1A
+	.string "ROUTE 103\n"
+	.string "{DOWN_ARROW} OLDALE TOWN\l"
+	.string "{UP_ARROW} Not OLDALE TOWN$"

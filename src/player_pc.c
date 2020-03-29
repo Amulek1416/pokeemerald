@@ -169,6 +169,11 @@ static const struct MenuAction gPCText_ItemPCOptionsText[] =
 
 static const struct ItemSlot gNewGamePCItems[] =
 {
+    // START OF CODE ADDED FROM ORIGINAL (FOR DEV PURPOSES)
+    {ITEM_MASTER_BALL, 99},
+    {ITEM_RARE_CANDY, 99},
+    // END OF CODE ADDED FROM ORIGINAL
+    
     { ITEM_POTION, 1 },
     { ITEM_NONE, 0 }
 };

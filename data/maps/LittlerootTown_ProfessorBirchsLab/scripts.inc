@@ -555,7 +555,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex:: @ 81FA2F8
 	call_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED
-	setvar VAR_OLDALE_TOWN_STATE, 1
+	@setvar VAR_OLDALE_TOWN_STATE, 1
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 4
 	setvar VAR_LITTLEROOT_TOWN_STATE, 3
 	releaseall
@@ -751,7 +751,8 @@ LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon: @ 81FA8B1
 	.string "PROF. BIRCH: While you're at it, why not\n"
 	.string "give a nickname to that {STR_VAR_1}?$"
 
-LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival: @ 81FA8F6
+@ ORIGINAL TEXT
+LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival_ORIGINAL: @ 81FA8F6
 	.string "PROF. BIRCH: If you work at POKéMON\n"
 	.string "and gain experience, I think you'll make\l"
 	.string "an extremely good TRAINER.\p"
@@ -760,15 +761,41 @@ LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival: @ 81FA8F6
 	.string "{PLAYER}{KUN}, don't you think it might be\n"
 	.string "a good idea to go see {RIVAL}?$"
 
-LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou: @ 81FA9D5
+@ MODIFIED TEXT
+LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival: @ 81FA8F6
+	.string "PROF. BIRCH: If you work at POKéMON\n"
+	.string "and gain experience, I think you'll make\l"
+	.string "an extremely good TRAINER.\p"
+	.string "My kid, {RIVAL}, is also studying\n"
+	.string "POKéMON while helping me out.\p"
+	.string "Speaking of, {PLAYER}{KUN} could you\n"
+	.string "go find {RIVAL}for me?$"
+
+@ ORIGINAL TEXT
+LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou_ORIGINAL: @ 81FA9D5
 	.string "PROF. BIRCH: Great!\n"
 	.string "{RIVAL} should be happy, too.\p"
 	.string "Get {RIVAL} to teach you what it\n"
 	.string "means to be a TRAINER.$"
 
-LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay: @ 81FAA35
+@ MODIFIED TEXT
+LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou: @ 81FA9D5
+	.string "PROF. BIRCH: Great!\n"
+	.string "{RIVAL} should be happy to meet you!$"
+
+@ ORIGINAL TEXT
+LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay_ORIGINAL: @ 81FAA35
 	.string "PROF. BIRCH: Oh, don't be that way.\n"
 	.string "You should go meet my kid.$"
+
+@ MODIFIED TEXT
+LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay: @ 81FAA35
+	.string "PROF. BIRCH: Are you kidding me?!\n"
+	.string "I just gave you a freaking rare\p"
+	.string "POKéMON, and THIS is how you say\n"
+	.string "thank you?!\p"
+	.string "I'll ask you again. Will you go\n"
+	.string "get {RIVAL} for me?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome: @ 81FAA74
 	.string "PROF. BIRCH: {RIVAL}?\n"
@@ -778,7 +805,8 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome: @ 81FAA74
 	.string "If you or your POKéMON get tired,\n"
 	.string "you should get some rest at home.$"
 
-LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex: @ 81FAB22
+@ ORIGINAL TEXT
+LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex_ORIGINAL: @ 81FAB22
 	.string "PROF. BIRCH: Oh, hi, {PLAYER}{KUN}!\p"
 	.string "I heard you beat {RIVAL} on\n"
 	.string "your first try. That's excellent!\p"
@@ -790,10 +818,21 @@ LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex: @ 81FAB22
 	.string "research, but I think you should have\l"
 	.string "this POKéDEX.$"
 
+@ MODIFIED TEXT
+LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex: @ 81FAB22
+	.string "PROF. BIRCH: {PLAYER}{KUN}!\n"
+	.string "You made {RIVAL} cry!\p"
+	.string "How could you have killed\n"
+	.string "my kid's pokemon!\p"
+	.string "To make up for this horrible insident,\n"
+	.string "you are going to help me with my research!\p"
+	.string "Take this POKéDEX and start researching!$"
+
 LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex: @ 81FAC32
 	.string "{PLAYER} received the POKéDEX!$"
 
-LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex: @ 81FAC4B
+@ ORIGINAL TEXT
+LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex_ORIGINAL: @ 81FAC4B
 	.string "PROF. BIRCH: The POKéDEX is a high-tech\n"
 	.string "tool that automatically makes a record\l"
 	.string "of any POKéMON you meet or catch.\p"
@@ -804,19 +843,48 @@ LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex: @ 81FAC4B
 	.string "why, {RIVAL} looks for me while I'm out\l"
 	.string "doing fieldwork, and shows me.$"
 
-LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait: @ 81FAD6F
+@ MODIFIED TEXT
+LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex: @ 81FAC4B
+	.string "PROF. BIRCH: The POKéDEX is a high-tech\n"
+	.string "tool that automatically makes a record\l"
+	.string "of any POKéMON you meet or catch.\p"
+	.string "Now {RIVAL}, will you give {PLAYER}{KUN} some\n"
+	.string "POKé BALLS to start his retribution?$"
+
+@ ORINGINAL TEXT
+LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait_ORIGINAL: @ 81FAD6F
 	.string "PROF. BIRCH: Countless POKéMON\n"
 	.string "await you!\p"
 	.string "Argh, I'm getting the itch to get out\n"
 	.string "and do fieldwork again!$"
 
-LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese: @ 81FADD7
+@ MODIFIED TEXT
+LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait: @ 81FAD6F
+	.string "PROF. BIRCH: Countless POKéMON\n"
+	.string "await you, so you will be my \l"
+	.string "research slave for a while! >:)$"
+
+@ ORIGINAL TEXT
+LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese_ORIGINAL: @ 81FADD7
 	.string "MAY: Oh, wow, {PLAYER}{KUN}!\n"
 	.string "You got a POKéDEX, too!\p"
 	.string "That's great! Just like me!\n"
 	.string "I've got something for you, too!$"
 
-LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls: @ 81FAE40
+@ MODIFIED TEXT
+LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese: @ 81FADD7
+	.string "{RIVAL}: DAD!!!! {PLAYER}{KUN} KILLED my POKéMON!\p"
+	.string "Shouldn't he get a bigger punishment?\n"
+	.string "Like death?!\p"
+	.string "PROF. BIRCH: No {RIVAL}, this is a\n"
+	.string "children's game.\p"
+	.string "While it's completely okay to have\n"
+	.string "monster slaves battle to the death,\l"
+	.string "it is not okay to murder people.\p"
+	.string "{RIVAL}: Fine... here are your POKé BALLS...$"
+
+@ ORIGINAL TEXT
+LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls_ORIGINAL: @ 81FAE40
 	.string "MAY: It's fun if you can get a lot of\n"
 	.string "POKéMON!\p"
 	.string "I'm going to look all over the place\n"
@@ -824,12 +892,26 @@ LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls: @ 81FAE40
 	.string "If I find any cute POKéMON, I'll catch\n"
 	.string "them with POKé BALLS!$"
 
+@ MODIFIED TEXT
+LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls: @ 81FAE40
+	.string "{RIVAL}: You listen {PLAYER}{KUN},\n"
+	.string "I WILL GET MY REVENGE!!!$"
+
 LittlerootTown_ProfessorBirchsLab_Text_OhYourBagsFull: @ 81FAEF3
 	.string "Oh? Your BAG's full.$"
 
-LittlerootTown_ProfessorBirchsLab_Text_MayWhereShouldIGoNext: @ 81FAF08
+@ ORIGINAL TEXT
+LittlerootTown_ProfessorBirchsLab_Text_MayWhereShouldIGoNext_ORIGINAL: @ 81FAF08
 	.string "MAY: I wonder where I should go look\n"
 	.string "for POKéMON next?$"
+
+@ MODIFIED TEXT
+LittlerootTown_ProfessorBirchsLab_Text_MayWhereShouldIGoNext: @ 81FAF08
+	.string "{RIVAL}: You better watch\n"
+	.string "out {PLAYER}{KUN}!\p"
+	.string "The next time I see you, you\n"
+	.string "will wish death could happen\l" 
+	.string "to you in this children's game!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese: @ 81FAF3F
 	.string "BRENDAN: Huh…\n"

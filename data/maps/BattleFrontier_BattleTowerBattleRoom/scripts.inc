@@ -67,7 +67,9 @@ BattleFrontier_BattleTowerBattleRoom_EventScript_DefeatedOpponent:: @ 8241C2F
 	msgbox BattleFrontier_BattleTowerBattleRoom_Text_RestoreMonsToFullHealth, MSGBOX_DEFAULT
 	playfanfare MUS_ME_ASA
 	waitfanfare
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
+
 BattleFrontier_BattleTowerBattleRoom_EventScript_AskReadyForOpponent:: @ 8241C8F
 	frontier_getbrainstatus
 	copyvar VAR_TEMP_F, VAR_RESULT
@@ -307,7 +309,8 @@ BattleFrontier_BattleTowerBattleRoom_EventScript_DoTowerBattle:: @ 824210E
 	closemessage
 	setvar VAR_TEMP_2, 0
 	frontier_set FRONTIER_DATA_RECORD_DISABLED, FALSE
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	setvar VAR_0x8004, SPECIAL_BATTLE_TOWER
 	setvar VAR_0x8005, 0
 	special DoSpecialTrainerBattle
@@ -316,7 +319,8 @@ BattleFrontier_BattleTowerBattleRoom_EventScript_DoTowerBattle:: @ 824210E
 	compare VAR_0x8004, FRONTIER_MODE_LINK_MULTIS
 	goto_if_eq BattleFrontier_BattleTowerBattleRoom_EventScript_EndTowerBattle
 	frontier_restorehelditems
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	frontier_resetsketch
 BattleFrontier_BattleTowerBattleRoom_EventScript_EndTowerBattle:: @ 824215A
 	tower_setinterviewdata

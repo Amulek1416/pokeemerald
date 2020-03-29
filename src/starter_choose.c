@@ -24,7 +24,7 @@
 #include "constants/species.h"
 #include "constants/rgb.h"
 
-#define STARTER_MON_COUNT   3
+#define STARTER_MON_COUNT   10 // Modified, originally set to 3
 
 // Position of the sprite of the selected starter Pokemon
 #define STARTER_PKMN_POS_X 120
@@ -115,6 +115,20 @@ static const u8 sPokeballCoords[STARTER_MON_COUNT][2] =
     {60, 64},
     {120, 88},
     {180, 64},
+
+/**
+ * START OF CODE ADDED TO ORGINAL
+ */
+    {60, 64},
+    {120, 88},
+    {180, 64},
+    {60, 64},
+    {120, 88},
+    {180, 64},
+    {60, 64},
+/**
+ * END OF CODE ADDED TO ORIGINAL
+ */
 };
 
 static const u8 sStarterLabelCoords[][2] =
@@ -122,6 +136,20 @@ static const u8 sStarterLabelCoords[][2] =
     {0, 9},
     {16, 10},
     {8, 4},
+
+/**
+ * START OF CODE ADDED TO ORGINAL
+ */
+    {0, 9},
+    {16, 10},
+    {8, 4},
+    {0, 9},
+    {16, 10},
+    {8, 4},
+    {0, 9},
+/**
+ * END OF CODE ADDED TO ORIGINAL
+ */
 };
 
 static const u16 sStarterMon[STARTER_MON_COUNT] =
@@ -129,6 +157,20 @@ static const u16 sStarterMon[STARTER_MON_COUNT] =
     SPECIES_TREECKO,
     SPECIES_TORCHIC,
     SPECIES_MUDKIP,
+
+/**
+ * START OF CODE ADDED TO ORGINAL
+ */
+    SPECIES_CHIKORITA,
+    SPECIES_CYNDAQUIL,
+    SPECIES_TOTODILE,
+    SPECIES_BULBASAUR,
+    SPECIES_CHARMANDER,
+    SPECIES_SQUIRTLE,
+    SPECIES_PIKACHU
+/**
+ * END OF CODE ADDED TO ORIGINAL
+ */
 };
 
 static const struct BgTemplate gUnknown_085B1E00[3] =

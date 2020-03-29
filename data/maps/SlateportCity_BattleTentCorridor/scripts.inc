@@ -60,7 +60,8 @@ SlateportCity_BattleTentCorridor_EventScript_ReturnToRoomFromBattle:: @ 8208EEE
 	msgbox BattleFrontier_BattleFactoryPreBattleRoom_Text_LetUsRestoreMons, MSGBOX_DEFAULT
 	playfanfare MUS_ME_ASA
 	waitfanfare
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 SlateportCity_BattleTentCorridor_EventScript_AskReadyForOpponent:: @ 8208F0D
 	frontier_get FRONTIER_DATA_BATTLE_NUM
 	compare VAR_RESULT, 1

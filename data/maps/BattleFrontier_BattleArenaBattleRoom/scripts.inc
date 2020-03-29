@@ -99,6 +99,7 @@ BattleFrontier_BattleArenaBattleRoom_EventScript_DeclareOpponentWinner:: @ 82575
 	waitmovement 0
 	arena_gettrainername
 	msgbox BattleFrontier_BattleArenaBattleRoom_Text_WinnerIsOpponent, MSGBOX_DEFAULT
+
 BattleFrontier_BattleArenaBattleRoom_EventScript_WarpToLobbyLost:: @ 8257615
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_LOST
 	warp MAP_BATTLE_FRONTIER_BATTLE_ARENA_LOBBY, 255, 7, 8
@@ -124,7 +125,9 @@ BattleFrontier_BattleArenaBattleRoom_EventScript_DefeatedOpponent:: @ 8257630
 	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	playfanfare MUS_ME_ASA
 	waitfanfare
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
+
 BattleFrontier_BattleArenaBattleRoom_EventScript_AskReadyForOpponent:: @ 82576B0
 	frontier_getbrainstatus
 	copyvar VAR_TEMP_F, VAR_RESULT
@@ -381,13 +384,15 @@ BattleFrontier_BattleArenaBattleRoom_EventScript_DoArenaBattle:: @ 8257B6C
 	closemessage
 	setvar VAR_TEMP_2, 0
 	frontier_set FRONTIER_DATA_RECORD_DISABLED, FALSE
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	setvar VAR_0x8004, SPECIAL_BATTLE_ARENA
 	setvar VAR_0x8005, 0
 	special DoSpecialTrainerBattle
 	waitstate
 	frontier_restorehelditems
-	special HealPlayerParty
+	@special HealPlayerParty @ ORIGINAL CODE
+	special HealAtPokeCenter @ MODIFIED CODE
 	frontier_resetsketch
 	return
 

@@ -250,6 +250,10 @@ static void MainMenu_FormatSavegameTime(void);
 static void MainMenu_FormatSavegameBadges(void);
 static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8, u8, u8, u8, u8, u8);
 
+// START OF PROTOTYPES ADDED TO ORIGINAL CODE
+static void MainMenu_FormatSaveGameDeathCount(void);
+// END
+
 // .rodata
 
 static const u16 sBirchSpeechBgPals[][16] = {
@@ -2142,6 +2146,9 @@ static void MainMenu_FormatSavegameText(void)
     MainMenu_FormatSavegamePokedex();
     MainMenu_FormatSavegameTime();
     MainMenu_FormatSavegameBadges();
+
+    // Added to original code
+    MainMenu_FormatSaveGameDeathCount();
 }
 
 static void MainMenu_FormatSavegamePlayer(void)
@@ -2307,6 +2314,24 @@ static void Task_NewGameBirchSpeech_ReturnFromNamingScreenShowTextbox(u8 taskId)
     {
         NewGameBirchSpeech_ShowDialogueWindow(0, 1);
         gTasks[taskId].func = Task_NewGameBirchSpeech_SoItsPlayerName;
+    }
+}
+
+/**
+ * BEGINNING OF FUNCTIONS ADDED TO ORIGINAL CODE
+ */
+static void MainMenu_FormatSaveGameDeathCount(void)
+{
+    u16 deathCount;
+    u8 str[0x20];
+    
+    if(FlagGet(FLAG_RECEIVED_POKEASHES_CASE) == TRUE)
+    {
+        deathCount = gPlayerTotalDeathCount;
+        StringExpandPlaceholders(gStringVar4, gText_ContinueMenuDeathCount);
+        AddTextPrinterParameterized3(2, 1, 0x6C, 0, sTextColor_MenuInfo, -1, gStringVar4);
+        ConvertIntToDecimalStringN(str, deathCount, STR_CONV_MODE_LEFT_ALIGN, 3);
+        AddTextPrinterParameterized3(2, 1, GetStringRightAlignXOffset(1, str, 0xD0), 0, sTextColor_MenuInfo, -1, str);
     }
 }
 

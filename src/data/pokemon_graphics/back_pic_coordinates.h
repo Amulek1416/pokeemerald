@@ -2,8 +2,8 @@ const struct MonCoords gMonBackPicCoords[] =
 {
     [SPECIES_NONE] =
     {
-        .size = 0x88,
-        .y_offset = 0x00,
+        .size = 0x08,
+        .y_offset = 0x04,
     },
     [SPECIES_BULBASAUR] =
     {

@@ -184,6 +184,7 @@ static bool32 sUnknown_03001274;
 // const rom data
 static const u8 sSpeciesToBackAnimSet[] =
 {
+    [SPECIES_HUMAN] = BACK_ANIM_H_SLIDE,
     [SPECIES_BULBASAUR] = BACK_ANIM_DIP_RIGHT_SIDE,
     [SPECIES_IVYSAUR] = BACK_ANIM_H_SLIDE,
     [SPECIES_VENUSAUR] = BACK_ANIM_HORIZONTAL_SHAKE,

@@ -1126,4 +1126,12 @@ void ItemUseOutOfBattle_CannotUse(u8 taskId)
     DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
 }
 
+/**
+ * BEGINNING OF ADDED CODE COMPARED TO ORIGNAL CODE FORKED FROM
+ */
+void ItemUseOutOfBattle_PokeAshCase(u8 taskId)
+{
+    return;
+}
+
 #undef tUsingRegisteredKeyItem
