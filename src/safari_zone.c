@@ -74,6 +74,8 @@ void ExitSafariMode(void)
 
 bool8 SafariZoneTakeStep(void)
 {
+    u8 hasAlivePokemon = FALSE;
+    u8 i;
     if (GetSafariZoneFlag() == FALSE)
     {
         return FALSE;
@@ -81,7 +83,13 @@ bool8 SafariZoneTakeStep(void)
 
     DecrementFeederStepCounters();
     sSafariZoneStepCounter--;
-    if (sSafariZoneStepCounter == 0)
+
+    
+    for(i = 0; i < gPlayerPartyCount; i++) //Added
+        if(GetMonData(&gPlayerParty[i], MON_DATA_HP))
+            hasAlivePokemon = TRUE;
+
+    if (sSafariZoneStepCounter == 0 && hasAlivePokemon)
     {
         ScriptContext1_SetupScript(SafariZone_EventScript_TimesUp);
         return TRUE;

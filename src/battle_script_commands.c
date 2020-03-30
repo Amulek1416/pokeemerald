@@ -53,6 +53,7 @@
 #include "constants/rgb.h"
 #include "data.h"
 #include "constants/party_menu.h"
+#include "safari_zone.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
 
@@ -10442,6 +10443,8 @@ static void Cmd_trygivecaughtmonnick(void)
             gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
         break;
     }
+    ExitSafariMode();
+    
 }
 
 static void Cmd_subattackerhpbydmg(void)

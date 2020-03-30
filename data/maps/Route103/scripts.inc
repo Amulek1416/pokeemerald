@@ -340,7 +340,7 @@ Route103_Text_MayDefeated_ORIGINAL: @ 81EC881
 @ MOFIFIED TEXT
 Route103_Text_MayDefeated: @ 81EC881
 	.string "MAY: NNNNNNNNOOOOOOOOOOOOOOOO!!!!\n"
-	.string "You killed my POKéMON!!! :'(\n"
+	.string "You killed my POKéMON!!! :'($"
 
 @ ORIGINAL TEXT
 Route103_Text_MayTimeToHeadBack_ORIGINAL: @ 81EC8AE

@@ -25,6 +25,7 @@
 #include "script_menu.h"
 #include "sprite.h"
 #include "string_util.h"
+#include "safari_zone.h"
 #include "tv.h"
 #include "constants/event_objects.h"
 #include "constants/items.h"
@@ -578,6 +579,7 @@ u8 HealPlayerParty(bool8 atCenter) // Changed from "void HealPlayerParty(void)"
     u8 ppBonuses;
     u8 arg[4];
     u8 faintedPkmn = 0; // Added
+    u8 hasAlivePokemon = FALSE;
 
     // restore HP.
     for(i = 0; i < gPlayerPartyCount; i++)
@@ -611,7 +613,15 @@ u8 HealPlayerParty(bool8 atCenter) // Changed from "void HealPlayerParty(void)"
         else // Added
             faintedPkmn |= (0x01 << i); // Added
     }
-
+    for(i = 0; i < gPlayerPartyCount; i++) //Added
+        if(GetMonData(&gPlayerParty[i], MON_DATA_HP))
+            hasAlivePokemon = TRUE;
+    
+    if(!hasAlivePokemon)//Added
+        EnterSafariMode();
+    else//Added
+        ExitSafariMode();
+    
     // Only pokeCenters can take care of remains
     if(faintedPkmn != 0 && atCenter) // Added
         TakeCareOfDead(faintedPkmn); // Added
