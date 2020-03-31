@@ -44,6 +44,7 @@ You can find us on [Discord](https://discord.gg/d5dubZ3) and [IRC](https://kiwii
 * Change in storyline along the dialog of most characters
 * Able to pick any of the first 3gen starters (just keep pressing right past the pokeball to see them)
 * When Pokémon faints, it can't be revived. It is now dead.
+* When player is out of pokemon, the game acts like you're in the safari zone (WARNING: can be a little glitchy)
 * Start off with a special surprise in item PC (currently to help play-test)
 * Every Pokémon is shiny (cause why not?)
 * Currently has a character that blocks you from going any farther than the first two routes and towns (will be removed after more is developed)
