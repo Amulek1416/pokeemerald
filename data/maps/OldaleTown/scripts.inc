@@ -206,7 +206,7 @@ OldaleTown_Movement_Unknown2: @ 81E9013
 OldaleTown_EventScript_FootprintsMan:: @ 81E901F
 	lock
 	faceplayer
-	goto_if_set STILL_DEVELOPING, OldaleTown_EventScript_NotBlockingPath
+	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_NotBlockingPath
 	msgbox OldaleTown_Text_StillDeveloping, MSGBOX_DEFAULT
 	closemessage
 	applymovement 3, Common_Movement_FaceOriginalDirection
