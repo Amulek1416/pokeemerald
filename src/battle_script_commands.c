@@ -10085,7 +10085,9 @@ static void Cmd_handleballthrow(void)
         u8 catchRate;
 
         if (gLastUsedItem == ITEM_SAFARI_BALL)
+        {
             catchRate = gBattleStruct->safariCatchFactor * 1275 / 100;
+        }
         else
             catchRate = gBaseStats[gBattleMons[gBattlerTarget].species].catchRate;
 
@@ -10227,11 +10229,23 @@ static void Cmd_givecaughtmon(void)
             gBattleCommunication[MULTISTRING_CHOOSER]++;
     }
 
+    
+
     gBattleResults.caughtMonSpecies = GetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerAttacker ^ BIT_SIDE]], MON_DATA_SPECIES, NULL);
     GetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerAttacker ^ BIT_SIDE]], MON_DATA_NICKNAME, gBattleResults.caughtMonNick);
     gBattleResults.caughtMonBall = GetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerAttacker ^ BIT_SIDE]], MON_DATA_POKEBALL, NULL);
 
     gBattlescriptCurrInstr++;
+
+    if (gLastUsedItem == ITEM_SAFARI_BALL)
+    {
+        if(GetNoPokeModeFlag())
+        {
+            // gNumDustyPokeballs = 0;
+            FlagClear(FLAG_SYS_NOPOKE_MODE);
+        }
+        return;
+    }
 }
 
 static void Cmd_trysetcaughtmondexflags(void)

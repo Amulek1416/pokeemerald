@@ -220,6 +220,8 @@ gSpecials:: @ 81DBA64
 	def_special ResetSSTidalFlag
 	def_special EnterSafariMode
 	def_special ExitSafariMode
+	def_special EnterNoPokeMode
+	def_special ExitNoPokeMode
 	def_special GetPokeblockFeederInFront
 	def_special OpenPokeblockCaseOnFeeder
 	def_special IsMirageIslandPresent

@@ -29,6 +29,7 @@ extern const u8 SafariZone_EventScript_OutOfBallsMidBattle[];
 extern const u8 SafariZone_EventScript_OutOfBalls[];
 
 EWRAM_DATA u8 gNumSafariBalls = 0;
+EWRAM_DATA u8 gNumDustyPokeballs = 0;
 EWRAM_DATA static u16 sSafariZoneStepCounter = 0;
 EWRAM_DATA static u8 sSafariZoneCaughtMons = 0;
 EWRAM_DATA static u8 sSafariZonePkblkUses = 0;
@@ -63,6 +64,17 @@ void EnterSafariMode(void)
     sSafariZonePkblkUses = 0;
 }
 
+bool32 GetNoPokeModeFlag(void)
+{
+    return FlagGet(FLAG_SYS_NOPOKE_MODE);
+}
+
+void EnterNoPokeMode(void)
+{
+    FlagSet(FLAG_SYS_NOPOKE_MODE);
+    gNumDustyPokeballs = 30;
+}
+
 void ExitSafariMode(void)
 {
     sub_80EE44C(sSafariZoneCaughtMons, sSafariZonePkblkUses);
@@ -70,6 +82,12 @@ void ExitSafariMode(void)
     ClearAllPokeblockFeeders();
     gNumSafariBalls = 0;
     sSafariZoneStepCounter = 0;
+}
+
+void ExitNoPokeMode(void)
+{
+    gNumDustyPokeballs = 0;
+    FlagClear(FLAG_SYS_NOPOKE_MODE);
 }
 
 bool8 SafariZoneTakeStep(void)
@@ -123,6 +141,19 @@ void CB2_EndSafariBattle(void)
         ScriptContext1_SetupScript(SafariZone_EventScript_OutOfBalls);
         ScriptContext1_Stop();
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+    }
+}
+
+void CB2_EndNoPokeBattle(void)
+{    
+    if (gNumDustyPokeballs != 0)
+    {
+        SetMainCallback2(CB2_ReturnToField);
+    }
+    else if (gBattleOutcome == B_OUTCOME_NO_DUSTY_POKEBALLS)
+    {
+        gNumDustyPokeballs = 30;
+        SetMainCallback2(CB2_ReturnToField);
     }
 }
 

@@ -362,7 +362,7 @@ void BattleAI_SetupAIData(u8 defaultScoreMoves)
     // Choose proper trainer ai scripts.
     if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
         AI_THINKING_STRUCT->aiFlags = GetAiScriptsInRecordedBattle();
-    else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
+    else if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI))
         AI_THINKING_STRUCT->aiFlags = AI_SCRIPT_SAFARI;
     else if (gBattleTypeFlags & BATTLE_TYPE_ROAMER)
         AI_THINKING_STRUCT->aiFlags = AI_SCRIPT_ROAMING;

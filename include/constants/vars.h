@@ -147,7 +147,7 @@
 #define VAR_ROUTE133_STATE                   0x4080 // Unused Var
 #define VAR_ROUTE134_STATE                   0x4081 // Unused Var
 #define VAR_LITTLEROOT_HOUSES_STATE_MAY      0x4082
-#define VAR_UNUSED_0x4083                    0x4083 // Unused Var
+#define FLAG_NO_POKEMON                      0x4083 // For when user has no pokemon
 #define VAR_BIRCH_LAB_STATE                  0x4084
 #define VAR_PETALBURG_GYM_STATE              0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman 
 #define VAR_CONTEST_HALL_STATE               0x4086
@@ -184,7 +184,7 @@
 #define VAR_TRICK_HOUSE_BEING_WATCHED_STATE  0x40A5
 #define VAR_TRICK_HOUSE_FOUND_TRICK_MASTER   0x40A6
 #define VAR_TRICK_HOUSE_ENTRANCE_STATE       0x40A7
-#define VAR_UNUSED_0x40A8                    0x40A8 // Unused Var
+#define VAR_NOPOKE_STATE                     0x40A8 // Unused Var
 #define VAR_CYCLING_CHALLENGE_STATE          0x40A9
 #define VAR_SLATEPORT_MUSEUM_1F_STATE        0x40AA
 #define VAR_TRICK_HOUSE_PUZZLE_1_STATE       0x40AB

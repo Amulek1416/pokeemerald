@@ -82,10 +82,80 @@ static void SafariHandleLinkStandbyMsg(void);
 static void SafariHandleResetActionMoveSelection(void);
 static void SafariHandleCmd55(void);
 static void SafariCmdEnd(void);
-
 static void SafariBufferRunCommand(void);
 static void SafariBufferExecCompleted(void);
 static void CompleteWhenChosePokeblock(void);
+
+// START: Added Funciton Prototypes
+static void NoPokeBufferRunCommand(void);
+static void NoPokeHandleChooseAction(void);
+static void HandleNoPokeInputChooseAction(void);
+static void HandleNoPokeChooseActionAfterDma3(void);
+static void CompleteOnBattlerSpriteCallbackDummy_NoPoke(void);
+static void CompleteOnInactiveTextPrinter_NoPoke(void);
+static void CompleteOnHealthboxSpriteCallbackDummy_NoPoke(void);
+static void CompleteWhenChosePokeblock_NoPoke(void);
+static void CompleteOnFinishedBattleAnimation(void);
+static void NoPokeBufferExecCompleted(void);
+static void CompleteOnFinishedStatusAnimation_NoPoke(void);
+static void NoPokeHandleGetMonData(void);
+static void NoPokeHandleGetRawMonData(void);
+static void NoPokeHandleSetMonData(void);
+static void NoPokeHandleSetRawMonData(void);
+static void NoPokeHandleLoadMonSprite(void);
+static void NoPokeHandleSwitchInAnim(void);
+static void NoPokeHandleReturnMonToBall(void);
+static void NoPokeHandleDrawTrainerPic(void);
+static void NoPokeHandleTrainerSlide(void);
+static void NoPokeHandleTrainerSlideBack(void);
+static void NoPokeHandleFaintAnimation(void);
+static void NoPokeHandlePaletteFade(void);
+static void NoPokeHandleSuccessBallThrowAnim(void);
+static void NoPokeHandleBallThrowAnim(void);
+static void NoPokeHandlePause(void);
+static void NoPokeHandleMoveAnimation(void);
+static void NoPokeHandlePrintString(void);
+static void NoPokeHandlePrintSelectionString(void);
+static void CompleteOnSpecialAnimDone_NoPoke(void);
+static void NoPokeHandleUnknownYesNoBox(void);
+static void NoPokeHandleChooseMove(void);
+static void NoPokeHandleChooseItem(void);
+static void NoPokeHandleChoosePokemon(void);
+static void NoPokeHandleCmd23(void);
+static void NoPokeHandleHealthBarUpdate(void);
+static void NoPokeHandleExpUpdate(void);
+static void NoPokeHandleStatusIconUpdate(void);
+static void NoPokeHandleStatusAnimation(void);
+static void NoPokeHandleStatusXor(void);
+static void NoPokeHandleDataTransfer(void);
+static void NoPokeHandleDMA3Transfer(void);
+static void NoPokeHandlePlayBGM(void);
+static void NoPokeHandleCmd32(void);
+static void NoPokeHandleTwoReturnValues(void);
+static void NoPokeHandleChosenMonReturnValue(void);
+static void NoPokeHandleOneReturnValue(void);
+static void NoPokeHandleOneReturnValue_Duplicate(void);
+static void NoPokeHandleCmd37(void);
+static void NoPokeHandleCmd38(void);
+static void NoPokeHandleCmd39(void);
+static void NoPokeHandleCmd40(void);
+static void NoPokeHandleHitAnimation(void);
+static void NoPokeHandleCmd42(void);
+static void NoPokeHandlePlaySE(void);
+static void NoPokeHandlePlayFanfareOrBGM(void);
+static void NoPokeHandleFaintingCry(void);
+static void NoPokeHandleIntroSlide(void);
+static void NoPokeHandleIntroTrainerBallThrow(void);
+static void NoPokeHandleDrawPartyStatusSummary(void);
+static void NoPokeHandleHidePartyStatusSummary(void);
+static void NoPokeHandleEndBounceEffect(void);
+static void NoPokeHandleSpriteInvisibility(void);
+static void NoPokeHandleBattleAnimation(void);
+static void NoPokeHandleLinkStandbyMsg(void);
+static void NoPokeHandleResetActionMoveSelection(void);
+static void NoPokeHandleCmd55(void);
+static void NoPokeCmdEnd(void);
+// END: Added Fuction Prototypes
 
 static void (*const sSafariBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
 {
@@ -145,7 +215,69 @@ static void (*const sSafariBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
     SafariHandleLinkStandbyMsg,
     SafariHandleResetActionMoveSelection,
     SafariHandleCmd55,
-    SafariCmdEnd
+    SafariCmdEnd,
+    
+};
+
+static void (*const sNoPokeBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
+{
+    NoPokeHandleGetMonData,
+    NoPokeHandleGetRawMonData,
+    NoPokeHandleSetMonData,
+    NoPokeHandleSetRawMonData,
+    NoPokeHandleLoadMonSprite,
+    NoPokeHandleSwitchInAnim,
+    NoPokeHandleReturnMonToBall,
+    NoPokeHandleDrawTrainerPic,
+    NoPokeHandleTrainerSlide,
+    NoPokeHandleTrainerSlideBack,
+    NoPokeHandleFaintAnimation,
+    NoPokeHandlePaletteFade,
+    NoPokeHandleSuccessBallThrowAnim,
+    NoPokeHandleBallThrowAnim,
+    NoPokeHandlePause,
+    NoPokeHandleMoveAnimation,
+    NoPokeHandlePrintString,
+    NoPokeHandlePrintSelectionString,
+    NoPokeHandleChooseAction,
+    NoPokeHandleUnknownYesNoBox,
+    NoPokeHandleChooseMove,
+    NoPokeHandleChooseItem,
+    NoPokeHandleChoosePokemon,
+    NoPokeHandleCmd23,
+    NoPokeHandleHealthBarUpdate,
+    NoPokeHandleExpUpdate,
+    NoPokeHandleStatusIconUpdate,
+    NoPokeHandleStatusAnimation,
+    NoPokeHandleStatusXor,
+    NoPokeHandleDataTransfer,
+    NoPokeHandleDMA3Transfer,
+    NoPokeHandlePlayBGM,
+    NoPokeHandleCmd32,
+    NoPokeHandleTwoReturnValues,
+    NoPokeHandleChosenMonReturnValue,
+    NoPokeHandleOneReturnValue,
+    NoPokeHandleOneReturnValue_Duplicate,
+    NoPokeHandleCmd37,
+    NoPokeHandleCmd38,
+    NoPokeHandleCmd39,
+    NoPokeHandleCmd40,
+    NoPokeHandleHitAnimation,
+    NoPokeHandleCmd42,
+    NoPokeHandlePlaySE,
+    NoPokeHandlePlayFanfareOrBGM,
+    NoPokeHandleFaintingCry,
+    NoPokeHandleIntroSlide,
+    NoPokeHandleIntroTrainerBallThrow,
+    NoPokeHandleDrawPartyStatusSummary,
+    NoPokeHandleHidePartyStatusSummary,
+    NoPokeHandleEndBounceEffect,
+    NoPokeHandleSpriteInvisibility,
+    NoPokeHandleBattleAnimation,
+    NoPokeHandleLinkStandbyMsg,
+    NoPokeHandleResetActionMoveSelection,
+    NoPokeHandleCmd55,
+    NoPokeCmdEnd,
 };
 
 static void SpriteCB_Null4(void)
@@ -155,6 +287,11 @@ static void SpriteCB_Null4(void)
 void SetControllerToSafari(void)
 {
     gBattlerControllerFuncs[gActiveBattler] = SafariBufferRunCommand;
+}
+
+void SetControllerToNoPoke(void)
+{
+    gBattlerControllerFuncs[gActiveBattler] = NoPokeBufferRunCommand;
 }
 
 static void SafariBufferRunCommand(void)
@@ -688,3 +825,519 @@ static void SafariHandleCmd55(void)
 static void SafariCmdEnd(void)
 {
 }
+
+// ADDED: Start of functions for when user doesn't have a pokemon
+static void NoPokeHandleChooseAction(void)
+{
+    s32 i;
+
+    gBattlerControllerFuncs[gActiveBattler] = HandleNoPokeChooseActionAfterDma3;
+    BattlePutTextOnWindow(gText_NoPokemonMenu, 2);
+
+    for (i = 0; i < 4; i++)
+        ActionSelectionDestroyCursorAt(i);
+
+    ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
+    BattleStringExpandPlaceholdersToDisplayedString(gText_WhatWillPkmnDo2);
+    BattlePutTextOnWindow(gDisplayedStringBattle, 1);
+}
+
+static void HandleNoPokeInputChooseAction(void)
+{
+    if (gMain.newKeys & A_BUTTON)
+    {
+        PlaySE(SE_SELECT);
+
+        switch (gActionSelectionCursor[gActiveBattler])
+        {
+        case 0:
+            BtlController_EmitTwoReturnValues(1, B_ACTION_SAFARI_BALL, 0);
+            break;
+        case 1:
+            BtlController_EmitTwoReturnValues(1, B_ACTION_SAFARI_RUN, 0);
+            break;
+        case 2:
+            BtlController_EmitTwoReturnValues(1, B_ACTION_SAFARI_RUN, 0);
+            break;
+        case 3:
+            BtlController_EmitTwoReturnValues(1, B_ACTION_SAFARI_RUN, 0);
+            break;
+        }
+        NoPokeBufferExecCompleted();
+    }
+    else if (gMain.newKeys & DPAD_LEFT)
+    {
+        if (gActionSelectionCursor[gActiveBattler] & 1)
+        {
+            PlaySE(SE_SELECT);
+            ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
+            gActionSelectionCursor[gActiveBattler] ^= 1;
+            ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
+        }
+    }
+    else if (gMain.newKeys & DPAD_RIGHT)
+    {
+        if (!(gActionSelectionCursor[gActiveBattler] & 1))
+        {
+            PlaySE(SE_SELECT);
+            ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
+            gActionSelectionCursor[gActiveBattler] ^= 1;
+            ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
+        }
+    }
+    else if (gMain.newKeys & DPAD_UP)
+    {
+        if (gActionSelectionCursor[gActiveBattler] & 2)
+        {
+            PlaySE(SE_SELECT);
+            ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
+            gActionSelectionCursor[gActiveBattler] ^= 2;
+            ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
+        }
+    }
+    else if (gMain.newKeys & DPAD_DOWN)
+    {
+        if (!(gActionSelectionCursor[gActiveBattler] & 2))
+        {
+            PlaySE(SE_SELECT);
+            ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
+            gActionSelectionCursor[gActiveBattler] ^= 2;
+            ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
+        }
+    }
+}
+
+static void HandleNoPokeChooseActionAfterDma3(void)
+{
+    if (!IsDma3ManagerBusyWithBgCopy())
+    {
+        gBattle_BG0_X = 0;
+        gBattle_BG0_Y = 160;
+        gBattlerControllerFuncs[gActiveBattler] = HandleNoPokeInputChooseAction;
+    }
+}
+
+static void NoPokeBufferRunCommand(void)
+{
+    if (gBattleControllerExecFlags & gBitTable[gActiveBattler])
+    {
+        if (gBattleBufferA[gActiveBattler][0] < ARRAY_COUNT(sNoPokeBufferCommands))
+            sNoPokeBufferCommands[gBattleBufferA[gActiveBattler][0]]();
+        else
+            NoPokeBufferExecCompleted();
+    }
+}
+
+static void CompleteOnBattlerSpriteCallbackDummy_NoPoke(void)
+{
+    if (gSprites[gBattlerSpriteIds[gActiveBattler]].callback == SpriteCallbackDummy)
+        NoPokeBufferExecCompleted();
+}
+
+static void CompleteOnInactiveTextPrinter_NoPoke(void)
+{
+    if (!IsTextPrinterActive(0))
+        NoPokeBufferExecCompleted();
+}
+
+static void CompleteOnHealthboxSpriteCallbackDummy_NoPoke(void)
+{
+    if (gSprites[gHealthboxSpriteIds[gActiveBattler]].callback == SpriteCallbackDummy)
+        NoPokeBufferExecCompleted();
+}
+
+static void CompleteWhenChosePokeblock_NoPoke(void)
+{
+    if (gMain.callback2 == BattleMainCB2 && !gPaletteFade.active)
+    {
+        BtlController_EmitOneReturnValue(1, gSpecialVar_ItemId);
+        NoPokeBufferExecCompleted();
+    }
+}
+
+static void CompleteOnFinishedBattleAnimation_NoPoke(void)
+{
+    if (!gBattleSpritesDataPtr->healthBoxesData[gActiveBattler].animFromTableActive)
+        NoPokeBufferExecCompleted();
+}
+
+static void NoPokeBufferExecCompleted(void)
+{
+    gBattlerControllerFuncs[gActiveBattler] = NoPokeBufferRunCommand;
+    if (gBattleTypeFlags & BATTLE_TYPE_LINK)
+    {
+        u8 playerId = GetMultiplayerId();
+
+        PrepareBufferDataTransferLink(2, 4, &playerId);
+        gBattleBufferA[gActiveBattler][0] = CONTROLLER_TERMINATOR_NOP;
+    }
+    else
+    {
+        gBattleControllerExecFlags &= ~gBitTable[gActiveBattler];
+    }
+}
+
+static void CompleteOnFinishedStatusAnimation_NoPoke(void)
+{
+    if (!gBattleSpritesDataPtr->healthBoxesData[gActiveBattler].statusAnimActive)
+        NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleGetMonData(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleGetRawMonData(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleSetMonData(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleSetRawMonData(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleLoadMonSprite(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleSwitchInAnim(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleReturnMonToBall(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleDrawTrainerPic(void)
+{
+    DecompressTrainerBackPic(gSaveBlock2Ptr->playerGender, gActiveBattler);
+    SetMultiuseSpriteTemplateToTrainerBack(gSaveBlock2Ptr->playerGender, GetBattlerPosition(gActiveBattler));
+    gBattlerSpriteIds[gActiveBattler] = CreateSprite(
+      &gMultiuseSpriteTemplate,
+      80,
+      (8 - gTrainerBackPicCoords[gSaveBlock2Ptr->playerGender].size) * 4 + 80,
+      30);
+    gSprites[gBattlerSpriteIds[gActiveBattler]].oam.paletteNum = gActiveBattler;
+    gSprites[gBattlerSpriteIds[gActiveBattler]].pos2.x = 240;
+    gSprites[gBattlerSpriteIds[gActiveBattler]].data[0] = -2;
+    gSprites[gBattlerSpriteIds[gActiveBattler]].callback = sub_805D7AC;
+    gBattlerControllerFuncs[gActiveBattler] = CompleteOnBattlerSpriteCallbackDummy_NoPoke;
+}
+
+static void NoPokeHandleTrainerSlide(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleTrainerSlideBack(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleFaintAnimation(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandlePaletteFade(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleSuccessBallThrowAnim(void)
+{
+    gBattleSpritesDataPtr->animationData->ballThrowCaseId = BALL_3_SHAKES_SUCCESS;
+    gDoingBattleAnim = TRUE;
+    InitAndLaunchSpecialAnimation(gActiveBattler, gActiveBattler, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), B_ANIM_SAFARI_BALL_THROW);
+    gBattlerControllerFuncs[gActiveBattler] = CompleteOnSpecialAnimDone_NoPoke;
+}
+
+static void NoPokeHandleBallThrowAnim(void)
+{
+    u8 ballThrowCaseId = gBattleBufferA[gActiveBattler][1];
+
+    gBattleSpritesDataPtr->animationData->ballThrowCaseId = ballThrowCaseId;
+    gDoingBattleAnim = TRUE;
+    InitAndLaunchSpecialAnimation(gActiveBattler, gActiveBattler, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), B_ANIM_SAFARI_BALL_THROW);
+    gBattlerControllerFuncs[gActiveBattler] = CompleteOnSpecialAnimDone_NoPoke;
+}
+
+static void NoPokeHandlePause(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleMoveAnimation(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandlePrintString(void)
+{
+    u16 *stringId;
+
+    gBattle_BG0_X = 0;
+    gBattle_BG0_Y = 0;
+    stringId = (u16*)(&gBattleBufferA[gActiveBattler][2]);
+    BufferStringBattle(*stringId);
+    BattlePutTextOnWindow(gDisplayedStringBattle, 0);
+    gBattlerControllerFuncs[gActiveBattler] = CompleteOnInactiveTextPrinter_NoPoke;
+}
+
+static void NoPokeHandlePrintSelectionString(void)
+{
+    if (GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
+        NoPokeHandlePrintString();
+    else
+        NoPokeBufferExecCompleted();
+}
+
+static void CompleteOnSpecialAnimDone_NoPoke(void)
+{
+    if (!gDoingBattleAnim || !gBattleSpritesDataPtr->healthBoxesData[gActiveBattler].specialAnimActive)
+        NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleUnknownYesNoBox(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleChooseMove(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleChooseItem(void)
+{
+    s32 i;
+
+    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+    gBattlerControllerFuncs[gActiveBattler] = NoPokeHandleChoosePokemon;
+    gBattlerInMenuId = gActiveBattler;
+}
+
+static void NoPokeHandleChoosePokemon(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleCmd23(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleHealthBarUpdate(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleExpUpdate(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleStatusIconUpdate(void)
+{
+    UpdateHealthboxAttribute(gHealthboxSpriteIds[gActiveBattler], &gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], HEALTHBOX_NOPOKE_ALL);
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleStatusAnimation(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleStatusXor(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleDataTransfer(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleDMA3Transfer(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandlePlayBGM(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleCmd32(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleTwoReturnValues(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleChosenMonReturnValue(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleOneReturnValue(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleOneReturnValue_Duplicate(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleCmd37(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleCmd38(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleCmd39(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleCmd40(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleHitAnimation(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleCmd42(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandlePlaySE(void)
+{
+    s8 pan;
+
+    if (GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
+        pan = SOUND_PAN_ATTACKER;
+    else
+        pan = SOUND_PAN_TARGET;
+
+    PlaySE12WithPanning(gBattleBufferA[gActiveBattler][1] | (gBattleBufferA[gActiveBattler][2] << 8), pan);
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandlePlayFanfareOrBGM(void)
+{
+    if (gBattleBufferA[gActiveBattler][3])
+    {
+        BattleStopLowHpSound();
+        PlayBGM(gBattleBufferA[gActiveBattler][1] | (gBattleBufferA[gActiveBattler][2] << 8));
+    }
+    else
+    {
+        PlayFanfare(gBattleBufferA[gActiveBattler][1] | (gBattleBufferA[gActiveBattler][2] << 8));
+    }
+
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleFaintingCry(void)
+{
+    u16 species = GetMonData(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], MON_DATA_SPECIES);
+
+    PlayCry1(species, 25);
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleIntroSlide(void)
+{
+    HandleIntroSlide(gBattleBufferA[gActiveBattler][1]);
+    gIntroSlideFlags |= 1;
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleIntroTrainerBallThrow(void)
+{
+    UpdateHealthboxAttribute(gHealthboxSpriteIds[gActiveBattler], &gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], HEALTHBOX_NOPOKE_ALL);
+    sub_8076918(gActiveBattler);
+    SetHealthboxSpriteVisible(gHealthboxSpriteIds[gActiveBattler]);
+    gBattlerControllerFuncs[gActiveBattler] = CompleteOnHealthboxSpriteCallbackDummy_NoPoke;
+}
+
+static void NoPokeHandleDrawPartyStatusSummary(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleHidePartyStatusSummary(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleEndBounceEffect(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleSpriteInvisibility(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleBattleAnimation(void)
+{
+    u8 animationId = gBattleBufferA[gActiveBattler][1];
+    u16 argument = gBattleBufferA[gActiveBattler][2] | (gBattleBufferA[gActiveBattler][3] << 8);
+
+    if (TryHandleLaunchBattleTableAnimation(gActiveBattler, gActiveBattler, gActiveBattler, animationId, argument))
+        NoPokeBufferExecCompleted();
+    else
+        gBattlerControllerFuncs[gActiveBattler] = CompleteOnFinishedBattleAnimation_NoPoke;
+}
+
+static void NoPokeHandleLinkStandbyMsg(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleResetActionMoveSelection(void)
+{
+    NoPokeBufferExecCompleted();
+}
+
+static void NoPokeHandleCmd55(void)
+{
+    gBattleOutcome = gBattleBufferA[gActiveBattler][1];
+    FadeOutMapMusic(5);
+    BeginFastPaletteFade(3);
+    NoPokeBufferExecCompleted();
+    if ((gBattleTypeFlags & BATTLE_TYPE_LINK) && !(gBattleTypeFlags & BATTLE_TYPE_IS_MASTER))
+        gBattlerControllerFuncs[gActiveBattler] = sub_81595E4;
+}
+
+static void NoPokeCmdEnd(void)
+{
+}
+
+// END of functions for when user doesn't have any pokemon
+

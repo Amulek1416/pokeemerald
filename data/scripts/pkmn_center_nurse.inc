@@ -84,6 +84,7 @@ EventScript_PkmnCenterNurse_ReturnPkmn:: @ 82719E2
 EventScript_PkmnCenterNurse_BringOutYourDead::
     message gText_RestoredPkmnTookCareOfDead
     call_if_unset FLAG_RECEIVED_POKEASHES_CASE, EventScript_GetPkmnAshesCase
+    
     return
 
 @ ADDED FUNCTION: Added to give player a place to store their dead pokemon

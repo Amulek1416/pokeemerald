@@ -68,6 +68,7 @@ struct TrainerBattleParameter
 // this file's functions
 static void DoBattlePikeWildBattle(void);
 static void DoSafariBattle(void);
+static void DoNoPokeBattle(void);
 static void DoStandardWildBattle(void);
 static void CB2_EndWildBattle(void);
 static void CB2_EndScriptedWildBattle(void);
@@ -372,6 +373,8 @@ void BattleSetup_StartWildBattle(void)
 {
     if (GetSafariZoneFlag())
         DoSafariBattle();
+    else if (GetNoPokeModeFlag())
+        DoNoPokeBattle();
     else
         DoStandardWildBattle();
 }
@@ -420,6 +423,16 @@ static void DoSafariBattle(void)
     FreezeObjectEvents();
     sub_808BCF4();
     gMain.savedCallback = CB2_EndSafariBattle;
+    gBattleTypeFlags = BATTLE_TYPE_SAFARI;
+    CreateBattleStartTask(GetWildBattleTransition(), 0);
+}
+
+static void DoNoPokeBattle(void)
+{
+    ScriptContext2_Enable();
+    FreezeObjectEvents();
+    sub_808BCF4();
+    gMain.savedCallback = CB2_EndNoPokeBattle;
     gBattleTypeFlags = BATTLE_TYPE_SAFARI;
     CreateBattleStartTask(GetWildBattleTransition(), 0);
 }

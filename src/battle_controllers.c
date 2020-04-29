@@ -9,6 +9,7 @@
 #include "party_menu.h"
 #include "pokemon.h"
 #include "recorded_battle.h"
+#include "safari_zone.h"
 #include "task.h"
 #include "util.h"
 #include "constants/abilities.h"
@@ -159,7 +160,13 @@ static void InitSinglePlayerBtlControllers(void)
         gBattleMainFunc = BeginBattleIntro;
 
         if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
-            gBattlerControllerFuncs[0] = SetControllerToSafari;
+        {
+            if(GetNoPokeModeFlag())
+                gBattlerControllerFuncs[0] = SetControllerToNoPoke;
+            else
+                gBattlerControllerFuncs[0] = SetControllerToSafari;
+        }
+            
         else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL)
             gBattlerControllerFuncs[0] = SetControllerToWally;
         else

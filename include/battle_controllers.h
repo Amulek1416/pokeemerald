@@ -267,6 +267,9 @@ void SetControllerToPlayerPartner(void);
 // safari controller
 void SetControllerToSafari(void);
 
+// no pokemon controller
+void SetControllerToNoPoke(void);
+
 // wally controller
 void SetControllerToWally(void);
 

@@ -695,7 +695,7 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
         {
             if (state == 2)
             {
-                if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
+                if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI))
                     LoadCompressedSpriteSheet(&sSpriteSheet_SafariHealthbox);
                 else
                     LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthbox);

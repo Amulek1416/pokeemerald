@@ -138,7 +138,10 @@ static void HandleAction_UseItem(void);
 static void HandleAction_Run(void);
 static void HandleAction_WatchesCarefully(void);
 static void HandleAction_SafariZoneBallThrow(void);
+static void HandleAction_DustyPokeballThrow(void);
 static void HandleAction_ThrowPokeblock(void);
+static void HandleAction_KickPokemon(void);
+static void HandleAction_PunchPokemon(void);
 static void HandleAction_GoNear(void);
 static void HandleAction_SafariZoneRun(void);
 static void HandleAction_WallyBallThrow(void);
@@ -555,6 +558,9 @@ static void (* const sTurnActionsFuncsTable[])(void) =
     [B_ACTION_TRY_FINISH] = HandleAction_TryFinish,
     [B_ACTION_FINISHED] = HandleAction_ActionFinished,
     [B_ACTION_NOTHING_FAINTED] = HandleAction_NothingIsFainted,
+    [B_ACTION_NOPOKE_PUNCH] = HandleAction_KickPokemon,
+    [B_ACTION_NOPOKE_KICK] = HandleAction_PunchPokemon,
+    [B_ACTION_DUSTY_POKE_BALL] = HandleAction_DustyPokeballThrow,
 };
 
 static void (* const sEndTurnFuncsTable[])(void) =
@@ -568,6 +574,7 @@ static void (* const sEndTurnFuncsTable[])(void) =
     [B_OUTCOME_MON_FLED] = HandleEndTurn_MonFled,
     [B_OUTCOME_CAUGHT] = HandleEndTurn_FinishBattle,
     [B_OUTCOME_NO_SAFARI_BALLS] = HandleEndTurn_FinishBattle,
+    [B_OUTCOME_NO_DUSTY_POKEBALLS] = HandleEndTurn_FinishBattle,
     [B_OUTCOME_FORFEITED] = HandleEndTurn_FinishBattle,
     [B_OUTCOME_MON_TELEPORTED] = HandleEndTurn_FinishBattle,
 };
@@ -3377,7 +3384,7 @@ static void BattleIntroDrawTrainersOrMonsSprites(void)
 
     for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
     {
-        if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI)
+        if (((gBattleTypeFlags & BATTLE_TYPE_SAFARI))
          && GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
         {
             ptr = (u8 *)&gBattleMons[gActiveBattler];
@@ -4797,7 +4804,7 @@ static void SetActionsAndBattlersTurnOrder(void)
     s32 turnOrderId = 0;
     s32 i, j;
 
-    if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
+    if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI))
     {
         for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
         {
@@ -5772,7 +5779,92 @@ static void HandleAction_SafariZoneBallThrow(void)
     gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
 }
 
+static void HandleAction_DustyPokeballThrow(void)
+{
+    gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
+    gBattle_BG0_X = 0;
+    gBattle_BG0_Y = 0;
+    gLastUsedItem = ITEM_SAFARI_BALL;
+    gBattlescriptCurrInstr = gBattlescriptsForBallThrow[ITEM_SAFARI_BALL];
+    gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
+}
+
 static void HandleAction_ThrowPokeblock(void)
+{
+    gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
+    gBattle_BG0_X = 0;
+    gBattle_BG0_Y = 0;
+    gBattleCommunication[MULTISTRING_CHOOSER] = gBattleBufferB[gBattlerAttacker][1] - 1;
+    gLastUsedItem = gBattleBufferB[gBattlerAttacker][2];
+
+    if (gBattleResults.pokeblockThrows < 0xFF)
+        gBattleResults.pokeblockThrows++;
+    if (gBattleStruct->safariPkblThrowCounter < 3)
+        gBattleStruct->safariPkblThrowCounter++;
+    if (gBattleStruct->safariEscapeFactor > 1)
+    {
+        if (gBattleStruct->safariEscapeFactor < sPkblToEscapeFactor[gBattleStruct->safariPkblThrowCounter][gBattleCommunication[MULTISTRING_CHOOSER]])
+            gBattleStruct->safariEscapeFactor = 1;
+        else
+            gBattleStruct->safariEscapeFactor -= sPkblToEscapeFactor[gBattleStruct->safariPkblThrowCounter][gBattleCommunication[MULTISTRING_CHOOSER]];
+    }
+
+    gBattlescriptCurrInstr = gBattlescriptsForSafariActions[2];
+    gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
+}
+
+static void HandleAction_KickPokemon(void)
+{
+    u8 side;
+    u8 var = 4;
+
+    gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
+
+    if (*(&gBattleStruct->field_91) & gBitTable[gBattlerAttacker])
+    {
+        gCurrentActionFuncId = B_ACTION_FINISHED;
+        return;
+    }
+
+    gCritMultiplier = 1;
+    gBattleScripting.dmgMultiplier = 1;
+    gBattleStruct->atkCancellerTracker = 0;
+    gMoveResultFlags = 0;
+    gMultiHitCounter = 0;
+    gBattleCommunication[6] = 0;
+    gCurrMovePos = gChosenMovePos = *(gBattleStruct->chosenMovePositions + gBattlerAttacker);
+
+    // Set move
+    gCurrentMove = gChosenMove = MOVE_LOW_KICK;
+
+    // if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
+        gBattleResults.lastUsedMovePlayer = gCurrentMove;
+
+    // // choose target
+    // side = GetBattlerSide(gBattlerAttacker) ^ BIT_SIDE;
+    // gBattlerTarget = *(gBattleStruct->moveTarget + gBattlerAttacker);
+    // if (gAbsentBattlerFlags & gBitTable[gBattlerTarget])
+    // {
+    //     if (GetBattlerSide(gBattlerAttacker) != GetBattlerSide(gBattlerTarget))
+    //     {
+    //         gBattlerTarget = GetBattlerAtPosition(GetBattlerPosition(gBattlerTarget) ^ BIT_FLANK);
+    //     }
+    //     else
+    //     {
+    //         gBattlerTarget = GetBattlerAtPosition(GetBattlerPosition(gBattlerAttacker) ^ BIT_SIDE);
+    //         if (gAbsentBattlerFlags & gBitTable[gBattlerTarget])
+    //             gBattlerTarget = GetBattlerAtPosition(GetBattlerPosition(gBattlerTarget) ^ BIT_FLANK);
+    //     }
+    // }
+
+    // Exec Battle Scrpit
+    gBattlescriptCurrInstr = gBattleScriptsForMoveEffects[gBattleMoves[gCurrentMove].effect];
+    
+    // Finish
+    gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
+}
+
+static void HandleAction_PunchPokemon(void)
 {
     gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
     gBattle_BG0_X = 0;

@@ -248,6 +248,7 @@ extern const u8 gText_BattleSwitchWhich3[];
 extern const u8 gText_BattleSwitchWhich4[];
 extern const u8 gText_BattleSwitchWhich5[];
 extern const u8 gText_SafariBalls[];
+extern const u8 gText_DustyPokeBalls[];
 extern const u8 gText_SafariBallLeft[];
 extern const u8 gText_Sleep[];
 extern const u8 gText_Poison[];
@@ -292,5 +293,8 @@ extern const u8 gText_BattleTourney[];
 
 extern const u16 gMissStringIds[];
 extern const u16 gTrappingMoves[];
+
+// ADDED: For No Pokemon Event
+extern const u8 gText_NoPokemonMenu[];
 
 #endif // GUARD_BATTLE_MESSAGE_H

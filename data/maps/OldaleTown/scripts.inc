@@ -8,12 +8,12 @@ OldaleTown_OnTransition: @ 81E8EA8
 	@call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance @ ORIGINAL CODE
 	call_if_unset STILL_DEVELOPING, OldaleTown_EventScript_BlockWestEntrance @ MODIFIED CODE
 	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
-	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
+	call_if_set STILL_DEVELOPING, OldaleTown_EventScript_SetOldaleState
 	end
 
 @ This script seems pointless because nothing uses VAR_OLDALE_TOWN_STATE
 OldaleTown_EventScript_SetOldaleState:: @ 81E8ECC
-	@setvar VAR_OLDALE_TOWN_STATE, 1
+	setvar VAR_OLDALE_TOWN_STATE, 1
 	return
 
 OldaleTown_EventScript_BlockWestEntrance:: @ 81E8ED2
@@ -206,7 +206,7 @@ OldaleTown_Movement_Unknown2: @ 81E9013
 OldaleTown_EventScript_FootprintsMan:: @ 81E901F
 	lock
 	faceplayer
-	goto_if_set FLAG_STILL_DEVELOPING_0, OldaleTown_EventScript_NotBlockingPath
+	goto_if_set STILL_DEVELOPING, OldaleTown_EventScript_NotBlockingPath
 	msgbox OldaleTown_Text_StillDeveloping, MSGBOX_DEFAULT
 	closemessage
 	applymovement 3, Common_Movement_FaceOriginalDirection

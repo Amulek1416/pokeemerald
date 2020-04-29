@@ -618,9 +618,9 @@ u8 HealPlayerParty(bool8 atCenter) // Changed from "void HealPlayerParty(void)"
             hasAlivePokemon = TRUE;
     
     if(!hasAlivePokemon)//Added
-        EnterSafariMode();
+        EnterNoPokeMode();
     else//Added
-        ExitSafariMode();
+        ExitNoPokeMode();
     
     // Only pokeCenters can take care of remains
     if(faintedPkmn != 0 && atCenter) // Added

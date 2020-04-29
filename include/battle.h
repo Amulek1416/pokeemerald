@@ -34,6 +34,9 @@
 
 #define B_ACTION_CANCEL_PARTNER         12 // when choosing an action
 #define B_ACTION_NOTHING_FAINTED        13 // when choosing an action
+#define B_ACTION_NOPOKE_PUNCH           14 // For NoPoke instance
+#define B_ACTION_NOPOKE_KICK            15 // For NoPoke instance
+#define B_ACTION_DUSTY_POKE_BALL        16 // For NoPoke instance
 #define B_ACTION_NONE                   0xFF
 
 #define MAX_TRAINER_ITEMS 4

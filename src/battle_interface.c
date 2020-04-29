@@ -1392,7 +1392,7 @@ void SwapHpBarsWithHpText(void)
             {
                 if (!IsDoubleBattle())
                     continue;
-                if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
+                if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI))
                     continue;
 
                 if (noBars == TRUE) // bars to text
@@ -1414,7 +1414,7 @@ void SwapHpBarsWithHpText(void)
             {
                 if (noBars == TRUE) // bars to text
                 {
-                    if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
+                    if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI))
                     {
                         // Most likely a debug function.
                         PrintSafariMonInfo(gHealthboxSpriteIds[i], &gEnemyParty[gBattlerPartyIndexes[i]]);
@@ -1432,7 +1432,7 @@ void SwapHpBarsWithHpText(void)
                 {
                     UpdateStatusIconInHealthbox(gHealthboxSpriteIds[i]);
                     UpdateHealthboxAttribute(gHealthboxSpriteIds[i], &gEnemyParty[gBattlerPartyIndexes[i]], HEALTHBOX_HEALTH_BAR);
-                    if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
+                    if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI))
                         UpdateHealthboxAttribute(gHealthboxSpriteIds[i], &gEnemyParty[gBattlerPartyIndexes[i]], HEALTHBOX_NICK);
                 }
             }
@@ -2196,6 +2196,8 @@ void UpdateHealthboxAttribute(u8 healthboxSpriteId, struct Pokemon *mon, u8 elem
             UpdateStatusIconInHealthbox(healthboxSpriteId);
         if (elementId == HEALTHBOX_SAFARI_ALL_TEXT)
             UpdateSafariBallsTextOnHealthbox(healthboxSpriteId);
+        if (elementId == HEALTHBOX_NOPOKE_ALL)
+            UpdateStatusIconInHealthbox(healthboxSpriteId);
         if (elementId == HEALTHBOX_SAFARI_ALL_TEXT || elementId == HEALTHBOX_SAFARI_BALLS_TEXT)
             UpdateLeftNoOfBallsTextOnHealthbox(healthboxSpriteId);
     }

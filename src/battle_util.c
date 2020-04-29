@@ -1798,7 +1798,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
     speciesDef = GetMonData(pokeDef, MON_DATA_SPECIES);
     pidDef = GetMonData(pokeDef, MON_DATA_PERSONALITY);
 
-    if (!(gBattleTypeFlags & BATTLE_TYPE_SAFARI)) // Why isn't that check done at the beginning?
+    if (!((gBattleTypeFlags & BATTLE_TYPE_SAFARI))) // Why isn't that check done at the beginning?
     {
         u8 moveType;
         s32 i;
