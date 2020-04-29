@@ -395,9 +395,6 @@ void DoWhiteOut(void)
  */
     // ORIGINAL
     // HealPlayerParty();
-
-    // MODIFIED
-    HealPlayerParty(FALSE);
 /**
  * END OF MODIFIED CODE
  */
