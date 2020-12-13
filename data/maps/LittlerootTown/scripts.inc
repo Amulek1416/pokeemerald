@@ -1025,8 +1025,8 @@ LittlerootTown_Text_SwitchShoesWithRunningShoes_ORIGINAL: @ 81E8925
 LittlerootTown_Text_SwitchShoesWithRunningShoes: @ 81E8925
 	.string "{PLAYER} switched shoes with the\n"
 	.string "RUNNING SHOES!\p"
-	.string "{PLAYER}'s feet start tingling\n"
-	.string "with enery!$"
+	.string "{PLAYER}'s feet started tingling\n"
+	.string "with energy!$"
 
 @ ORIGINAL TEXT
 LittlerootTown_Text_ExplainRunningShoes_ORIGINAL: @ 81E894F
