@@ -202,14 +202,14 @@ void CFile::TryConvertString()
             int length;
             StringParser stringParser(m_buffer, m_size);
 
-            try
-            {
+            // try
+            // {
                 m_pos += stringParser.ParseString(m_pos, s, length);
-            }
-            catch (std::runtime_error& e)
-            {
-                RaiseError(e.what());
-            }
+            // }
+            // catch (std::runtime_error& e)
+            // {
+            //     RaiseError(e.what());
+            // }
 
             for (int i = 0; i < length; i++)
                 printf("0x%02X, ", s[i]);

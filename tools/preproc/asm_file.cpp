@@ -262,14 +262,14 @@ int AsmFile::ReadString(unsigned char* s)
     int length;
     StringParser stringParser(m_buffer, m_size);
 
-    try
-    {
+    // try
+    // {
         m_pos += stringParser.ParseString(m_pos, s, length);
-    }
-    catch (std::runtime_error& e)
-    {
-        RaiseError(e.what());
-    }
+    // }
+    // catch (runtime_error& e)
+    // {
+    //     RaiseError(e.what());
+    // }
 
     SkipWhitespace();
 
