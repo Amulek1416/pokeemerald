@@ -30,6 +30,17 @@
 #define STARTER_PKMN_POS_X 120
 #define STARTER_PKMN_POS_Y 64
 
+#define STARTER_POKEMON_POKEBALL_POS_X      55
+#define STARTER_POKEMON_POKEBALL_POS_Y      55
+
+#define STARTER_POKEMON_CURSOR_OFFSET_Y     32
+#define STARTER_POKEMON_CURSOR_POS_X        (STARTER_POKEMON_POKEBALL_POS_X)
+#define STARTER_POKEMON_CURSOR_POS_Y        (STARTER_POKEMON_POKEBALL_POS_Y - \
+                                             STARTER_POKEMON_CURSOR_OFFSET_Y)
+
+#define STARTER_POKEMON_OFFSET_X            15
+#define STARTER_POKEMON_OFFSET_Y            8
+
 // text
 extern const u8 gText_BirchInTrouble[];
 extern const u8 gText_ConfirmStarterChoice[];
@@ -112,44 +123,65 @@ static const struct WindowTemplate gUnknown_085B1DE4 =
 
 static const u8 sPokeballCoords[STARTER_MON_COUNT][2] =
 {
-    {60, 64},
-    {120, 88},
-    {180, 64},
+    {
+        STARTER_POKEMON_POKEBALL_POS_X,
+        STARTER_POKEMON_POKEBALL_POS_Y + 2*STARTER_POKEMON_OFFSET_Y
+    },
+    {
+        STARTER_POKEMON_POKEBALL_POS_X + 12, 
+        STARTER_POKEMON_POKEBALL_POS_Y
+    },
+    {
+        STARTER_POKEMON_POKEBALL_POS_X + 2*STARTER_POKEMON_OFFSET_X - 5, 
+        STARTER_POKEMON_POKEBALL_POS_Y + 2*STARTER_POKEMON_OFFSET_Y
+    },
+    /****/
+    {
+        STARTER_POKEMON_POKEBALL_POS_X + 4 + 3*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_POKEBALL_POS_Y + 3*STARTER_POKEMON_OFFSET_Y
+    },
+    {
+        STARTER_POKEMON_POKEBALL_POS_X + 3 + 4*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_POKEBALL_POS_Y + 5 + 4*STARTER_POKEMON_OFFSET_Y
+    },
+    {
+        STARTER_POKEMON_POKEBALL_POS_X + 5*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_POKEBALL_POS_Y + 3*STARTER_POKEMON_OFFSET_Y
+    },
+    /****/
+    {
+        STARTER_POKEMON_POKEBALL_POS_X + 7*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_POKEBALL_POS_Y - 3 + STARTER_POKEMON_OFFSET_Y
+    },
+    {
+        STARTER_POKEMON_POKEBALL_POS_X + 8*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_POKEBALL_POS_Y - STARTER_POKEMON_OFFSET_Y
+    },
 
-/**
- * START OF CODE ADDED TO ORGINAL
- */
-    {60, 64},
-    {120, 88},
-    {180, 64},
-    {60, 64},
-    {120, 88},
-    {180, 64},
-    {60, 64},
-/**
- * END OF CODE ADDED TO ORIGINAL
- */
+    {
+        STARTER_POKEMON_POKEBALL_POS_X + 8*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_POKEBALL_POS_Y + 2*STARTER_POKEMON_OFFSET_Y
+    },
+    {
+        STARTER_POKEMON_POKEBALL_POS_X + 9*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_POKEBALL_POS_Y - 3 + STARTER_POKEMON_OFFSET_Y
+    },
 };
 
-static const u8 sStarterLabelCoords[][2] =
+static const u8 sStarterLabelCoords[STARTER_MON_COUNT][2] =
 {
-    {0, 9},
-    {16, 10},
-    {8, 4},
-
-/**
- * START OF CODE ADDED TO ORGINAL
- */
-    {0, 9},
-    {16, 10},
-    {8, 4},
-    {0, 9},
-    {16, 10},
-    {8, 4},
-    {0, 9},
-/**
- * END OF CODE ADDED TO ORIGINAL
- */
+    {8, 0},
+    {8, 0},
+    {8, 0},
+    /****/
+    {8, 0},
+    {8, 0},
+    {8, 0},
+    /****/
+    {8, 0},
+    {8, 0},
+    {8, 0},
+    {8, 0},
 };
 
 static const u16 sStarterMon[STARTER_MON_COUNT] =
@@ -157,20 +189,15 @@ static const u16 sStarterMon[STARTER_MON_COUNT] =
     SPECIES_TREECKO,
     SPECIES_TORCHIC,
     SPECIES_MUDKIP,
-
-/**
- * START OF CODE ADDED TO ORGINAL
- */
+    /****/
     SPECIES_CHIKORITA,
     SPECIES_CYNDAQUIL,
     SPECIES_TOTODILE,
+    /****/
     SPECIES_BULBASAUR,
     SPECIES_CHARMANDER,
     SPECIES_SQUIRTLE,
     SPECIES_PIKACHU
-/**
- * END OF CODE ADDED TO ORIGINAL
- */
 };
 
 static const struct BgTemplate gUnknown_085B1E00[3] =
@@ -259,9 +286,48 @@ static const struct OamData gOamData_85B1E20 =
 
 static const u8 sCursorCoords[][2] =
 {
-    {60, 32},
-    {120, 56},
-    {180, 32},
+    {
+        STARTER_POKEMON_CURSOR_POS_X,
+        STARTER_POKEMON_CURSOR_POS_Y + 2*STARTER_POKEMON_OFFSET_Y
+    },
+    {
+        STARTER_POKEMON_CURSOR_POS_X + 12, 
+        STARTER_POKEMON_CURSOR_POS_Y
+    },
+    {
+        STARTER_POKEMON_CURSOR_POS_X + 2*STARTER_POKEMON_OFFSET_X - 5, 
+        STARTER_POKEMON_CURSOR_POS_Y + 2*STARTER_POKEMON_OFFSET_Y
+    },
+    /****/
+    {
+        STARTER_POKEMON_CURSOR_POS_X + 4 + 3*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_CURSOR_POS_Y + 3*STARTER_POKEMON_OFFSET_Y
+    },
+    {
+        STARTER_POKEMON_CURSOR_POS_X + 3 + 4*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_CURSOR_POS_Y + 5 + 4*STARTER_POKEMON_OFFSET_Y
+    },
+    {
+        STARTER_POKEMON_CURSOR_POS_X + 5*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_CURSOR_POS_Y + 3*STARTER_POKEMON_OFFSET_Y
+    },
+    /****/
+    {
+        STARTER_POKEMON_CURSOR_POS_X + 7*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_CURSOR_POS_Y - 3 + STARTER_POKEMON_OFFSET_Y
+    },
+    {
+        STARTER_POKEMON_CURSOR_POS_X + 8*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_CURSOR_POS_Y - STARTER_POKEMON_OFFSET_Y
+    },
+    {
+        STARTER_POKEMON_CURSOR_POS_X + 8*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_CURSOR_POS_Y + 2*STARTER_POKEMON_OFFSET_Y
+    },
+    {
+        STARTER_POKEMON_CURSOR_POS_X + 9*STARTER_POKEMON_OFFSET_X, 
+        STARTER_POKEMON_CURSOR_POS_Y - 3 + STARTER_POKEMON_OFFSET_Y
+    },
 };
 
 static const union AnimCmd gSpriteAnim_85B1E30[] =
@@ -427,6 +493,7 @@ void CB2_ChooseStarter(void)
     u16 savedIme;
     u8 taskId;
     u8 spriteId;
+    u8 i;
 
     SetVBlankCallback(NULL);
 
@@ -499,17 +566,22 @@ void CB2_ChooseStarter(void)
     gSprites[spriteId].data[0] = taskId;
 
     // Create three Pokeball sprites
-    spriteId = CreateSprite(&sSpriteTemplate_PokeBall, sPokeballCoords[0][0], sPokeballCoords[0][1], 2);
-    gSprites[spriteId].data[0] = taskId;
-    gSprites[spriteId].data[1] = 0;
+    for(i = 0; i < STARTER_MON_COUNT; i++){
+        spriteId = CreateSprite(&sSpriteTemplate_PokeBall, sPokeballCoords[i][0], sPokeballCoords[i][1], 2);
+        gSprites[spriteId].data[0] = taskId;
+        gSprites[spriteId].data[1] = i;
+    }
 
-    spriteId = CreateSprite(&sSpriteTemplate_PokeBall, sPokeballCoords[1][0], sPokeballCoords[1][1], 2);
-    gSprites[spriteId].data[0] = taskId;
-    gSprites[spriteId].data[1] = 1;
+    // spriteId = CreateSprite(&sSpriteTemplate_PokeBall, sPokeballCoords[1][0], sPokeballCoords[1][1], 2);
+    // gSprites[spriteId].data[0] = taskId;
+    // gSprites[spriteId].data[1] = 1;
 
-    spriteId = CreateSprite(&sSpriteTemplate_PokeBall, sPokeballCoords[2][0], sPokeballCoords[2][1], 2);
+    // spriteId = CreateSprite(&sSpriteTemplate_PokeBall, sPokeballCoords[2][0], sPokeballCoords[2][1], 2);
+    // gSprites[spriteId].data[0] = taskId;
+    // gSprites[spriteId].data[1] = 2;
+    spriteId = CreateSprite(&sSpriteTemplate_Hand, 120, 56, 1);
     gSprites[spriteId].data[0] = taskId;
-    gSprites[spriteId].data[1] = 2;
+
 
     sStarterChooseWindowId = 0xFF;
 }
@@ -569,12 +641,12 @@ static void Task_StarterChoose2(u8 taskId)
 
 static void Task_StarterChoose3(u8 taskId)
 {
-    if (gSprites[gTasks[taskId].tCircleSpriteId].affineAnimEnded &&
-      gSprites[gTasks[taskId].tCircleSpriteId].pos1.x == STARTER_PKMN_POS_X &&
-      gSprites[gTasks[taskId].tCircleSpriteId].pos1.y == STARTER_PKMN_POS_Y)
-    {
+    // if (gSprites[gTasks[taskId].tCircleSpriteId].affineAnimEnded &&
+    //   gSprites[gTasks[taskId].tCircleSpriteId].pos1.x == STARTER_PKMN_POS_X &&
+    //   gSprites[gTasks[taskId].tCircleSpriteId].pos1.y == STARTER_PKMN_POS_Y)
+    // {
         gTasks[taskId].func = Task_StarterChoose4;
-    }
+    // }
 }
 
 static void Task_StarterChoose4(u8 taskId)
