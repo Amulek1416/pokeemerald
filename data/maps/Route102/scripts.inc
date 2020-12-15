@@ -9,6 +9,10 @@ Route102_EventScript_RouteSignOldale:: @ 81EC0EA
 	msgbox Route102_Text_RouteSignOldale, MSGBOX_SIGN
 	end
 
+Route102_EventScript_RouteDeveloping::
+	msgbox Route102_Text_RouteSignDeveloping, MSGBOX_SIGN
+	end
+
 Route102_EventScript_RouteSignPetalburg:: @ 81EC0F3
 	msgbox Route102_Text_RouteSignPetalburg, MSGBOX_SIGN
 	end
@@ -99,13 +103,22 @@ Route102_Text_ImNotVeryTall: @ 81EC2C0
 	.string "Fwatchoo!$"
 
 Route102_Text_CatchWholeBunchOfPokemon: @ 81EC32E
-	.string "I'm going to catch a whole bunch of\n"
-	.string "POKéMON!$"
+	.string "I'm going to enslave a whole bunch of\n"
+	.string "POKéMON!:)$"
 
 Route102_Text_RouteSignOldale: @ 81EC35B
 	.string "ROUTE 102\n"
-	.string "{RIGHT_ARROW} OLDALE TOWN$"
+	.string "{RIGHT_ARROW} OLDALE TOWN\p"
+	.string "{UP_ARROW} Pond\n"
+	.string "{LEFT_ARROW} Tree$"
 
 Route102_Text_RouteSignPetalburg: @ 81EC373
 	.string "ROUTE 102\n"
-	.string "{LEFT_ARROW} PETALBURG CITY$"
+	.string "{LEFT_ARROW} PETALBURG CITY\p"
+	.string "{RIGHT_ARROW} Berry Planting Place\n"
+	.string "{UP_ARROW} Another tree$"
+
+Route102_Text_RouteSignDeveloping:
+	.string "THANK YOU FOR PLAYING!\p"
+	.string "THIS GAME IS STILL A\n"
+	.string "WORK IN PROGRESS$"

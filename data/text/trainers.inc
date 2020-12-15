@@ -1,15 +1,15 @@
 Route102_Text_CalvinIntro: @ 8294513
-	.string "If you have POKéMON with you, then\n"
-	.string "you're an official POKéMON TRAINER!\l"
-	.string "You can't say no to my challenge!$"
+	.string "You have POKéMON?\n"
+	.string "Fight me!$"
 
 Route102_Text_CalvinDefeated: @ 829457C
-	.string "Arrgh, I lost…\n"
-	.string "I should have trained mine more…$"
+	.string "Arrgh, you killed my POKéMON!\n"
+	.string "Now I have to enslave some more…$"
 
 Route102_Text_CalvinPostBattle: @ 82945AC
-	.string "Listen, you. If you're strong,\n"
-	.string "you should have told me before!$"
+	.string "Be careful about who's POKéMON\n"
+	.string "you murder. Some trainers like\n"
+	.string "to hold grudges!$"
 
 Route102_Text_CalvinRegister: @ 82945EB
 	.string "I've been working hard at this since\n"
@@ -39,8 +39,8 @@ Route102_Text_AllenIntro: @ 8294775
 	.string "We're both beginners!$"
 
 Route102_Text_AllenDefeated: @ 82947AA
-	.string "I called you because I thought\n"
-	.string "I could beat you…$"
+	.string "Man, this is the tenth dead\n"
+	.string "POKéMON this week…$"
 
 Route102_Text_AllenPostBattle: @ 82947DB
 	.string "I haven't won once yet…\n"
@@ -48,7 +48,7 @@ Route102_Text_AllenPostBattle: @ 82947DB
 
 Route102_Text_RickIntro: @ 829480C
 	.string "Hahah! Our eyes met!\n"
-	.string "I'll take you on with my BUG POKéMON!$"
+	.string "I'll beat you up with my BUG POKéMON!$"
 
 Route102_Text_RickDefeated: @ 8294847
 	.string "Ow! Down and out!$"
@@ -59,15 +59,15 @@ Route102_Text_RickPostBattle: @ 8294859
 
 Route102_Text_TianaIntro: @ 829489E
 	.string "I'm going to keep winning and aim\n"
-	.string "to be the best TRAINER.\p"
-	.string "Help me further my career!$"
+	.string "to be the best KILLER.\p"
+	.string "Help me further my kill count!$"
 
 Route102_Text_TianaDefeated: @ 82948F3
-	.string "I ended up furthering your career…$"
+	.string "I ended up increasing your kills…$"
 
 Route102_Text_TianaPostBattle: @ 8294916
-	.string "To keep winning my way up, I see that\n"
-	.string "I have to catch more POKéMON.$"
+	.string "To keep killing my way up, I see that\n"
+	.string "I have to enslave more POKéMON.$"
 
 Route103_Text_DaisyIntro: @ 829495A
 	.string "Did you feel the tug of our\n"

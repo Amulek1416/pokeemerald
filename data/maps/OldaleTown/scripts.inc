@@ -5,10 +5,9 @@ OldaleTown_MapScripts:: @ 81E8EA2
 OldaleTown_OnTransition: @ 81E8EA8
 	call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_OLDALE_TOWN
-	@call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance @ ORIGINAL CODE
-	call_if_unset STILL_DEVELOPING, OldaleTown_EventScript_BlockWestEntrance @ MODIFIED CODE
+	call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
 	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
-	call_if_set STILL_DEVELOPING, OldaleTown_EventScript_SetOldaleState
+	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
 	end
 
 @ This script seems pointless because nothing uses VAR_OLDALE_TOWN_STATE
@@ -191,23 +190,12 @@ OldaleTown_Movement_Unknown2: @ 81E9013
 	step_end
 
 @ ORIGINAL FUNCTION
-@OldaleTown_EventScript_FootprintsMan_ORIGINAL:: @ 81E901F
-@	lock
-@	faceplayer
-@	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_NotBlockingPath
-@	msgbox OldaleTown_Text_DiscoveredFootprints, MSGBOX_DEFAULT
-@	closemessage
-@	applymovement 3, Common_Movement_FaceOriginalDirection
-@	waitmovement 0
-@	release
-@	end
-
-@ MODIFIED FUNCTION
 OldaleTown_EventScript_FootprintsMan:: @ 81E901F
 	lock
 	faceplayer
 	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_NotBlockingPath
-	msgbox OldaleTown_Text_StillDeveloping, MSGBOX_DEFAULT
+	@ msgbox OldaleTown_Text_DiscoveredFootprints, MSGBOX_DEFAULT @ Original
+	msgbox OldaleTown_Text_StillDeveloping, MSGBOX_DEFAULT @ Modified
 	closemessage
 	applymovement 3, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -219,7 +207,7 @@ OldaleTown_EventScript_BlockedPath:: @ 81E903F
 	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_PlayerStepBack
 	applymovement 3, OldaleTown_Movement_BackUp
 	waitmovement 0
-	@msgbox OldaleTown_Text_WaitDontComeInHere, MSGBOX_DEFAULT @ ORIGINAL CODE
+	@ msgbox OldaleTown_Text_WaitDontComeInHere, MSGBOX_DEFAULT @ ORIGINAL CODE
 	msgbox OldaleTown_Text_StillDeveloping, MSGBOX_DEFAULT @ MODIFIED CODE
 	closemessage
 	applymovement 3, OldaleTown_Movement_ReturnToOriginalPosition
@@ -228,10 +216,10 @@ OldaleTown_EventScript_BlockedPath:: @ 81E903F
 	end
 
 @ ORIGINAL FUNCTION
-@OldaleTown_EventScript_NotBlockingPath_ORIGINAL:: @ 81E9066
-@	msgbox OldaleTown_Text_FinishedSketchingFootprints, MSGBOX_DEFAULT
-@	release
-@	end
+@ OldaleTown_EventScript_NotBlockingPath_ORIGINAL:: @ 81E9066
+@ 	msgbox OldaleTown_Text_FinishedSketchingFootprints, MSGBOX_DEFAULT
+@ 	release
+@ 	end
 
 @ MODIFIED FUNCTION
 OldaleTown_EventScript_NotBlockingPath:: @ 81E9066
@@ -412,13 +400,13 @@ OldaleTown_Text_PotionExplanation: @ 81E92AF
 	.string "Use it wisely!$"
 
 @ ORIGINAL TEXT NOT BEING USED
-@OldaleTown_Text_WaitDontComeInHere: @ 81E9313
-@	.string "Aaaaah! Wait!\n"
-@	.string "Please don't come in here.\p"
-@	.string "I just discovered the footprints of\n"
-@	.string "a rare POKéMON!\p"
-@	.string "Wait until I finish sketching\n"
-@	.string "them, okay?$"
+@ OldaleTown_Text_WaitDontComeInHere: @ 81E9313
+@ 	.string "Aaaaah! Wait!\n"
+@ 	.string "Please don't come in here.\p"
+@ 	.string "I just discovered the footprints of\n"
+@ 	.string "a rare POKéMON!\p"
+@ 	.string "Wait until I finish sketching\n"
+@ 	.string "them, okay?$"
 
 @ ADDED TEXT
 OldaleTown_Text_StillDeveloping:
@@ -429,18 +417,18 @@ OldaleTown_Text_StillDeveloping:
 	.string "Wait until I release an\n"
 	.string "update, okay?$"
 
-OldaleTown_Text_DiscoveredFootprints: @ 81E939A
-	.string "I just discovered the footprints of\n"
-	.string "a rare POKéMON!\p"
-	.string "Wait until I finish sketching\n"
-	.string "them, okay?$"
+@ OldaleTown_Text_DiscoveredFootprints: @ 81E939A
+	@ .string "I just discovered the footprints of\n"
+	@ .string "a rare POKéMON!\p"
+	@ .string "Wait until I finish sketching\n"
+	@ .string "them, okay?$"
 
 @ ORIGINAL TEXT NOT BEING USED
-@OldaleTown_Text_FinishedSketchingFootprints: @ 81E93F8
-@	.string "I finished sketching the footprints of\n"
-@	.string "a rare POKéMON.\p"
-@	.string "But it turns out they were only my\n"
-@	.string "own footprints…$"
+@ OldaleTown_Text_FinishedSketchingFootprints: @ 81E93F8
+@ 	.string "I finished sketching the footprints of\n"
+@ 	.string "a rare POKéMON.\p"
+@ 	.string "But it turns out they were only my\n"
+@ 	.string "own footprints…$"
 
 @ ADDED TEXT
 OldaleTown_Text_FinishedDeveloping:
